@@ -1,0 +1,15 @@
+{
+  "originHash" : "86c9b492c2c73576a32578adb31cb26d349f32c1befa9505271bd0f69958c445",
+  "pins" : [
+    {
+      "identity" : "package",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/DataRobakidze/package.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a3deb5e71026605c5a06aae60bdb06d8427e35db"
+      }
+    }
+  ],
+  "version" : 3
+}
