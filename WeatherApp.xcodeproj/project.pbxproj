@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B65D63A2C1A582C0060EED1 /* WarmNightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B65D6392C1A582C0060EED1 /* WarmNightView.swift */; };
+		0B65D63C2C1A583B0060EED1 /* CloudyNightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B65D63B2C1A583B0060EED1 /* CloudyNightView.swift */; };
+		0B65D63E2C1A584D0060EED1 /* RainyNightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B65D63D2C1A584D0060EED1 /* RainyNightView.swift */; };
+		0B65D6402C1A58620060EED1 /* SnowyNightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B65D63F2C1A58620060EED1 /* SnowyNightView.swift */; };
 		6E8A2ABE2C18E84E0022E272 /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8A2ABD2C18E84E0022E272 /* WeatherAppApp.swift */; };
 		6E8A2AC22C18E8510022E272 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E8A2AC12C18E8510022E272 /* Assets.xcassets */; };
 		6E8A2AC52C18E8510022E272 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E8A2AC42C18E8510022E272 /* Preview Assets.xcassets */; };
@@ -29,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B65D6392C1A582C0060EED1 /* WarmNightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarmNightView.swift; sourceTree = "<group>"; };
+		0B65D63B2C1A583B0060EED1 /* CloudyNightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudyNightView.swift; sourceTree = "<group>"; };
+		0B65D63D2C1A584D0060EED1 /* RainyNightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainyNightView.swift; sourceTree = "<group>"; };
+		0B65D63F2C1A58620060EED1 /* SnowyNightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowyNightView.swift; sourceTree = "<group>"; };
 		6E8A2ABA2C18E84E0022E272 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E8A2ABD2C18E84E0022E272 /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
 		6E8A2AC12C18E8510022E272 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,6 +70,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B65D6382C1A57C90060EED1 /* BackgroundsOfNights */ = {
+			isa = PBXGroup;
+			children = (
+				0B65D6392C1A582C0060EED1 /* WarmNightView.swift */,
+				0B65D63B2C1A583B0060EED1 /* CloudyNightView.swift */,
+				0B65D63D2C1A584D0060EED1 /* RainyNightView.swift */,
+				0B65D63F2C1A58620060EED1 /* SnowyNightView.swift */,
+			);
+			path = BackgroundsOfNights;
+			sourceTree = "<group>";
+		};
 		6E8A2AB12C18E84E0022E272 = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				854246FA2C191BD6008C75A2 /* Sunny.swift */,
+				0B65D6382C1A57C90060EED1 /* BackgroundsOfNights */,
 			);
 			path = Background;
 			sourceTree = "<group>";
@@ -272,17 +292,21 @@
 				6E8A2AD02C18E9160022E272 /* SearchView.swift in Sources */,
 				6E8A2ADA2C18EA5A0022E272 /* SearchViewModel.swift in Sources */,
 				854246FE2C191BE5008C75A2 /* Data.swift in Sources */,
+				0B65D63E2C1A584D0060EED1 /* RainyNightView.swift in Sources */,
 				6E8A2AD32C18E9720022E272 /* WeatherView.swift in Sources */,
 				6E8A2ADF2C18EBDA0022E272 /* Forecast.swift in Sources */,
 				854246FB2C191BD6008C75A2 /* Sunny.swift in Sources */,
 				6E8A2AD52C18E9C00022E272 /* WeatherViewModel.swift in Sources */,
 				941AF23B2C19FC5A00615612 /* LocationManager.swift in Sources */,
 				941AF23E2C1A0AF400615612 /* View.swift in Sources */,
+				0B65D63C2C1A583B0060EED1 /* CloudyNightView.swift in Sources */,
 				854247012C191C01008C75A2 /* Top View.swift in Sources */,
 				6E8A2AED2C19023E0022E272 /* CoordinateModel.swift in Sources */,
 				854247032C192A2D008C75A2 /* Preload data.swift in Sources */,
+				0B65D6402C1A58620060EED1 /* SnowyNightView.swift in Sources */,
 				85F817F52C19EBFE007F27C7 /* SearchWeatherModel.swift in Sources */,
 				6E8A2ABE2C18E84E0022E272 /* WeatherAppApp.swift in Sources */,
+				0B65D63A2C1A582C0060EED1 /* WarmNightView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
