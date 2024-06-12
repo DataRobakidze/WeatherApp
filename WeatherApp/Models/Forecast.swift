@@ -8,9 +8,9 @@
 import Foundation
 
 
-    
-    // MARK: - Welcome
-    struct Forecast: Decodable {
+// MARK: - Welcome
+class Forecast {
+    struct Model: Decodable {
         let cod: String
         let message, cnt: Int
         let list: [List]
@@ -30,10 +30,11 @@ import Foundation
     struct Coord: Decodable {
         let lat, lon: Double
     }
+  
     // MARK: - List
     struct List: Decodable {
         let dt: Int
-        let main: Main
+        let main: MainClass
         let weather: [Weather]
         let clouds: Clouds
         let wind: Wind
@@ -41,12 +42,12 @@ import Foundation
         let pop: Double
         let sys: Sys
         let dtTxt: String
-        // let rain: Rain?
+        let rain: Rain?
         
         enum CodingKeys: String, CodingKey {
             case dt, main, weather, clouds, wind, visibility, pop, sys
             case dtTxt = "dt_txt"
-            // case rain
+            case rain
         }
     }
     
@@ -56,7 +57,7 @@ import Foundation
     }
     
     // MARK: - MainClass
-    struct Main: Decodable {
+    struct MainClass: Decodable {
         let temp, feelsLike, tempMin, tempMax: Double
         let pressure, seaLevel, grndLevel, humidity: Int
         let tempKf: Double
@@ -71,6 +72,15 @@ import Foundation
             case grndLevel = "grnd_level"
             case humidity
             case tempKf = "temp_kf"
+        }
+    }
+    
+    // MARK: - Rain
+    struct Rain: Decodable {
+        let the3H: Double
+        
+        enum CodingKeys: String, CodingKey {
+            case the3H = "3h"
         }
     }
     
@@ -113,3 +123,5 @@ import Foundation
         let deg: Int
         let gust: Double
     }
+}
+
