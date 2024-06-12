@@ -20,7 +20,7 @@ let appContainer: ModelContainer = {
         
         // This code will only run if the persistent store is empty.
         let cities = [
-            CityData(city: CoordinateModel(name: "Tbilisi", latitude: 41.69, longitude: 44.80))
+            CityData(city: CoordinateModel(name: "Tbilisi", latitude: 41.69, longitude: 44.81))
         ]
         
         for city in cities {

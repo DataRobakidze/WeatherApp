@@ -125,7 +125,6 @@
 				854246FC2C191BE0008C75A2 /* Data */,
 				6E8A2ACF2C18E9160022E272 /* SearchView.swift */,
 				6E8A2AD92C18EA5A0022E272 /* SearchViewModel.swift */,
-				85F817F72C19F641007F27C7 /* Colors.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -187,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				941AF23D2C1A0AF400615612 /* View.swift */,
+				85F817F72C19F641007F27C7 /* Colors.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
