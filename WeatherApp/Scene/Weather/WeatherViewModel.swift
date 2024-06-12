@@ -10,10 +10,12 @@ import NetworkService
 
 class WeatherViewModel: ObservableObject {
     @Published var hourly: [DailyCurrent] = []
-    @Published var forecast: [List] = []
+    @Published var forecast: [Forecast.List] = []
     @Published var current: DailyCurrent?
     var baseIconUrlPath = "https://openweathermap.org/img/wn/"
     @Published var currentWeatherModel: CurrentWeather.Model?
+    
+    
     func fetchForecast(lat: Double, lon: Double) {
         let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&appid=690f88717c984072f681182b5be6acb1&units=metric"
         
@@ -22,7 +24,7 @@ class WeatherViewModel: ObservableObject {
                 switch result {
                 case .success(let data):
                     var seenDays: Set<String> = []
-                    var uniqueItems: [List] = []
+                    var uniqueItems: [Forecast.List] = []
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                     let outputFormatter = DateFormatter()

@@ -68,7 +68,9 @@ struct WeatherView: View {
     private func selectCity(_ city: CityData) {
         selectedCity = city
         viewModel.fetchingCurrentWeather(lat: city.latitude, lon: city.longitude)
+        viewModel.fetchForecast(lat: city.latitude, lon: city.longitude)
         print(city.latitude, city.longitude)
+        
     }
 }
 
