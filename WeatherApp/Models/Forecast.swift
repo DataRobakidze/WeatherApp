@@ -7,6 +7,7 @@
 
 import Foundation
 
+import Foundation
 
 // MARK: - Welcome
 class Forecast {
@@ -98,10 +99,11 @@ class Forecast {
     struct Weather: Decodable {
         let id: Int
         let main: MainEnum
-        let description: Description
+        let description: String  // Changed from Description enum to String
         let icon: String
     }
     
+    // You can keep this enum if you still want to have predefined cases, but it's no longer used directly
     enum Description: String, Codable {
         case brokenClouds = "broken clouds"
         case clearSky = "clear sky"
@@ -121,7 +123,6 @@ class Forecast {
     struct Wind: Decodable {
         let speed: Double
         let deg: Int
-        let gust: Double
+        let gust: Double?
     }
 }
-

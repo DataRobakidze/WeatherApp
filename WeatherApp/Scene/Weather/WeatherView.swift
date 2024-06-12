@@ -69,6 +69,7 @@ struct WeatherView: View {
         selectedCity = city
         viewModel.fetchingCurrentWeather(lat: city.latitude, lon: city.longitude)
         viewModel.fetchForecast(lat: city.latitude, lon: city.longitude)
+        viewModel.fetchHourly(lat: city.latitude, lon: city.longitude)
         print(city.latitude, city.longitude)
         
     }

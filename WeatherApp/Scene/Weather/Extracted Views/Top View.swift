@@ -17,7 +17,7 @@ struct CurrentTemperatureDetailsView: View {
     
     var body: some View {
         ZStack {
-            Color.white.opacity(0.35)
+            Color(hex: "5882C1").opacity(0.3)
                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                 .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 10)
             
@@ -47,7 +47,7 @@ struct CurrentDetailsHView: View {
     
     var body: some View {
         ZStack {
-            Color.white.opacity(0.35)
+            Color(hex: "5882C1").opacity(0.3)
                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                 .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 10)
             

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import NetworkService
+import SimpleNetworking
 
 final class SearchViewModel: ObservableObject {
     
@@ -63,17 +63,16 @@ final class SearchViewModel: ObservableObject {
         for city in cities {
             let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(city.latitude)&lon=\(city.longitude)&appid=690f88717c984072f681182b5be6acb1&units=metric"
             
-            NetworkService().getData(urlString: urlString) { (result: Result<SearchWeatherModel.Model, Error>) in
+            WebService().fetchData(from: urlString, resultType: SearchWeatherModel.Model.self) { [weak self] result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let data):
-                        self.weatherData[city.name] = data
+                        self?.weatherData[city.name] = data
                     case .failure(let error):
-                        print("Fetch failed: \(error.localizedDescription)")
+                        print("Fetch failed: \(error)")
                     }
                 }
             }
         }
     }
 }
-
