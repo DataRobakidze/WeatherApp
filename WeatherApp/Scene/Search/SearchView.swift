@@ -65,15 +65,11 @@ struct SearchView: View {
         try? modelContext.save()
         
         searchViewModel.searchResults.removeAll { $0.id == city.id }
-//        alertMessage = "City added successfully"
-//        showAlert = true
     }
     
     private func deleteCity(city: CityData) {
         modelContext.delete(city)
         try? modelContext.save()
-//        alertMessage = "\(city.name) deleted successfully"
-//        showAlert = true
     }
 }
 

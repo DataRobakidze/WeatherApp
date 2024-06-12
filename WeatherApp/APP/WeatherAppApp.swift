@@ -13,10 +13,6 @@ struct WeatherAppApp: App {
     @StateObject var viewModel = WeatherViewModel()
     @StateObject var locationManager = LocationManager()
     
-    init() {
-        print(URL.applicationSupportDirectory.path(percentEncoded: false))
-    }
-    
     var body: some Scene {
         WindowGroup {
             WeatherView()

@@ -15,11 +15,11 @@ class SearchWeatherModel {
     
     // MARK: - Main
     struct Main: Codable {
-        let temp: Double //TEMP
+        let temp: Double
     }
 
     // MARK: - Weather
     struct Weather: Codable {
-        let main: String //Weather decription
+        let main: String
     }
 }
