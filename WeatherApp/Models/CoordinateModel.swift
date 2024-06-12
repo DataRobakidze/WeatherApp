@@ -7,13 +7,6 @@
 
 import Foundation
 
-//struct CoordinateModel: Decodable, Identifiable {
-//    var id = UUID() // Add an id for Identifiable conformance
-//    let name: String
-//    let latitude: Double
-//    let longitude: Double
-//}
-
 struct CoordinateModel: Decodable, Identifiable {
     var id = UUID()
     let name: String

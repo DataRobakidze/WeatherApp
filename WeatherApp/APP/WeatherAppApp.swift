@@ -12,7 +12,10 @@ import SwiftData
 struct WeatherAppApp: App {
     @StateObject var viewModel = WeatherViewModel()
     @StateObject var locationManager = LocationManager()
-
+    
+    init() {
+        print(URL.applicationSupportDirectory.path(percentEncoded: false))
+    }
     
     var body: some Scene {
         WindowGroup {
@@ -20,7 +23,7 @@ struct WeatherAppApp: App {
                 .environmentObject(viewModel)
                 .environmentObject(locationManager)
                 .environment(\.modelContext, appContainer.mainContext)
-
+            
         }
         .modelContainer(for: CityData.self)
     }

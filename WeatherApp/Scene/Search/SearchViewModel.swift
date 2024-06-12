@@ -58,21 +58,7 @@ final class SearchViewModel: ObservableObject {
         }
         task.resume()
     }
-    
-//    func fetchingCurrentWeatherInSearch(for lat: Double, lon: Double) {
-//        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=690f88717c984072f681182b5be6acb1"
-//        
-//        NetworkService().getData(urlString: urlString) { (result: Result<SearchWeatherModel.Model, Error>) in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let data):
-//                    print(data as Any)
-//                case .failure(let error):
-//                    print("Fetch failed: \(error.localizedDescription)")
-//                }
-//            }
-//        }
-//    }
+
     func fetchWeatherData(for cities: [CoordinateModel]) {
         for city in cities {
             let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(city.latitude)&lon=\(city.longitude)&appid=690f88717c984072f681182b5be6acb1&units=metric"

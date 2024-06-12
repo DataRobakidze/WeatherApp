@@ -24,61 +24,21 @@ struct SearchView: View {
         NavigationStack {
             VStack {
                 if !searchViewModel.searchResults.isEmpty {
-                    ScrollView {
-                        VStack {
-                            ForEach(searchViewModel.searchResults) { city in
-                                Button {
-                                    addCity(city: city)
-                                    searchViewModel.searchResults.removeAll()
-                                } label: {
-                                    HStack {
-                                        Text(city.name)
-                                            .foregroundStyle(.black)
-                                            .padding(.vertical, 10)
-                                            .padding(.horizontal)
-                                        Spacer()
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    SearchResultsView(searchViewModel: searchViewModel, addCity: addCity)
                 } else {
-                    List {
-                        ForEach(selectedCities) { city in
-                            let weather = searchViewModel.weatherData[city.name] ?? {
-                                searchViewModel.fetchWeatherData(for: [CoordinateModel(name: city.name, latitude: city.latitude, longitude: city.longitude)])
-                                return nil
-                            }()
-                            
-                            SearchLocations(
-                                cityName: city.name,
-                                currentWeather: weather?.weather.first?.main ?? "Fetching...",
-                                temperature: weather != nil ? "\(Int(weather!.main.temp))°" : "Fetching..."
-                            )
-                            .listRowSeparator(.hidden)
-                            .padding(.vertical, -10)
-                            .swipeActions {
-                                if city.name != "Tbilisi" {
-                                    Button(role: .destructive) {
-                                        deleteCity(city: city)
-                                    } label: {
-                                        Label("Delete", systemImage: "trash")
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .listStyle(.inset)
+                    SelectedCitiesListView(selectedCities: selectedCities, searchViewModel: searchViewModel, deleteCity: deleteCity)
                 }
             }
-            .navigationTitle("Locations")
+            
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: BackButton())
             .padding()
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Notification"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
-            .searchable(text: $searchText)
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .onChange(of: searchText) {
-                    searchViewModel.searchResults.removeAll()
+                searchViewModel.searchResults.removeAll()
             }
             .onSubmit(of: .search) {
                 if searchText.isEmpty {
@@ -88,6 +48,7 @@ struct SearchView: View {
                     searchViewModel.fetchCityData(cityName: searchText, apiKey: searchViewModel.apiKey)
                 }
             }
+            .navigationBarTitle("Locations", displayMode: .large)
         }
     }
     
@@ -104,15 +65,77 @@ struct SearchView: View {
         try? modelContext.save()
         
         searchViewModel.searchResults.removeAll { $0.id == city.id }
-        alertMessage = "City added successfully"
-        showAlert = true
+//        alertMessage = "City added successfully"
+//        showAlert = true
     }
     
     private func deleteCity(city: CityData) {
         modelContext.delete(city)
         try? modelContext.save()
-        alertMessage = "\(city.name) deleted successfully"
-        showAlert = true
+//        alertMessage = "\(city.name) deleted successfully"
+//        showAlert = true
+    }
+}
+
+// MARK: - Extracted Views
+struct SearchResultsView: View {
+    @ObservedObject var searchViewModel: SearchViewModel
+    var addCity: (CoordinateModel) -> Void
+    
+    var body: some View {
+        ScrollView {
+            VStack {
+                ForEach(searchViewModel.searchResults) { city in
+                    Button {
+                        addCity(city)
+                        searchViewModel.searchResults.removeAll()
+                    } label: {
+                        HStack {
+                            Text(city.name)
+                                .foregroundStyle(.black)
+                                .padding(.vertical, 10)
+                                .padding(.horizontal)
+                            Spacer()
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct SelectedCitiesListView: View {
+    var selectedCities: [CityData]
+    @ObservedObject var searchViewModel: SearchViewModel
+    var deleteCity: (CityData) -> Void
+    
+    var body: some View {
+        List {
+            ForEach(selectedCities) { city in
+                let weather = searchViewModel.weatherData[city.name] ?? {
+                    searchViewModel.fetchWeatherData(for: [CoordinateModel(name: city.name, latitude: city.latitude, longitude: city.longitude)])
+                    return nil
+                }()
+                
+                SearchLocations(
+                    cityName: city.name,
+                    currentWeather: weather?.weather.first?.main ?? "Fetching...",
+                    temperature: weather != nil ? "\(Int(weather!.main.temp))°" : "Fetching..."
+                )
+                .listRowSeparator(.hidden)
+                .padding(.vertical, -10)
+                .swipeActions {
+                    if city.name != "Tbilisi" {
+                        Button(role: .destructive) {
+                            deleteCity(city)
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
+                }
+            }
+        }
+        .listStyle(.inset)
     }
 }
 
@@ -175,31 +198,30 @@ struct SearchLocations: View {
     }
 }
 
-// MARK: Navigation Bar Back Button Visual
-//struct NavigationView: View {
-//    
-//    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-//    
-//    var body: some View {
-//        VStack {
-//            HStack {
-//                Button {
-//                    self.mode.wrappedValue.dismiss()
-//                } label: {
-//                    Image(systemName: "chevron.left")
-//                }
-//                
-//                Spacer()
-//                
-//                Button {
-//                    
-//                } label: {
-//                    Image(systemName: "arrow.left")
-//                        .opacity(0)
-//                }
-//            }
-//            .padding()
-//            .navigationBarBackButtonHidden(true)
-//        }
-//    }
-//}
+extension View {
+    func barTitle(_ title: String,
+             size: NavigationBarItem.TitleDisplayMode = .large) -> some View {
+        self.navigationBarTitle(title, displayMode: size)
+    }
+}
+
+struct BackButton: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    var body : some View {
+        Button {
+        self.presentationMode.wrappedValue.dismiss()
+        } label: {
+            HStack {
+            Image(systemName: "chevron.left")
+                .aspectRatio(contentMode: .fit)
+                .foregroundColor(Color(UIColor.label))
+            }
+        }
+    }
+}
+
+struct Benchmark: Identifiable, Hashable {
+    let id = UUID()
+    var name: String
+}
