@@ -46,7 +46,11 @@ struct WeatherView: View {
                                 .frame(width: screenWidth * 0.93, height: 47)
                                 .font(.system(size: 18))
                                 .foregroundStyle(.white)
+                          
+                          HourlyWeatherView(hourly: $viewModel.hourly, current: $viewModel.current, baseIconUrlPath: viewModel.baseIconUrlPath)
+                          DailyWeatherView(forecast: $viewModel.forecast, baseIconUrlPath: viewModel.baseIconUrlPath)
                         }
+              
                     }
                 }
             }

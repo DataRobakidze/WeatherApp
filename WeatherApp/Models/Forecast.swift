@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 // MARK: - Welcome
 class Forecast {
     struct Model: Decodable {
@@ -29,7 +30,7 @@ class Forecast {
     struct Coord: Decodable {
         let lat, lon: Double
     }
-    
+  
     // MARK: - List
     struct List: Decodable {
         let dt: Int
@@ -123,3 +124,4 @@ class Forecast {
         let gust: Double
     }
 }
+
