@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct WeatherAppApp: App {
@@ -18,6 +19,9 @@ struct WeatherAppApp: App {
             WeatherView()
                 .environmentObject(viewModel)
                 .environmentObject(locationManager)
+                .environment(\.modelContext, appContainer.mainContext)
+
         }
+        .modelContainer(for: CityData.self)
     }
 }

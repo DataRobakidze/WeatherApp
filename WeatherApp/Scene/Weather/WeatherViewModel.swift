@@ -9,17 +9,18 @@ import Foundation
 import NetworkService
 
 class WeatherViewModel: ObservableObject {
-    let networking = NetworkService()
+  
     @Published var currentWeatherModel: CurrentWeather.Model?
     
     
     init() {
         fetchingCurrentWeather(lat: 44.34, lon: 10.99)
     }
+
     func fetchForecast(lat: Double, lon: Double) {
         let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&appid=690f88717c984072f681182b5be6acb1&units=metric"
         
-        NetworkService().getData(urlString: urlString) { (result: Result<Forecast, Error>) in
+        NetworkService().getData(urlString: urlString) { (result: Result<Forecast.Model, Error>) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
