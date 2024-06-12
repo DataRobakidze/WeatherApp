@@ -17,9 +17,6 @@ struct DailyWeatherView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.blue
-                .ignoresSafeArea()
             VStack {
                 ZStack {
                     Color.white.opacity(0.35)
@@ -90,7 +87,6 @@ struct DailyWeatherView: View {
             }
         }
     }
-}
 
 #Preview {
     let forecastMock = [List(dt: 1718200800, main: Main(temp: 293.15, feelsLike: 294.15, tempMin: 291.15, tempMax: 295.15, pressure: 1013, seaLevel: 1013, grndLevel: 1000, humidity: 80, tempKf: 0), weather: [Weather(id: 800, main: MainEnum(rawValue: "Clear") ?? .clear, description: Description(rawValue: "clear sky") ?? .clearSky, icon: "01d")], clouds: Clouds(all: 0), wind: Wind(speed: 1.5, deg: 120, gust: 2.0), visibility: 10000, pop: 0.0, sys: Sys(pod: .d), dtTxt: "2024-06-12 15:00:00")]

@@ -23,9 +23,6 @@ struct HourlyWeatherView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.blue
-                .ignoresSafeArea()
             VStack {
                 ZStack {
                     Color.white.opacity(0.35)
@@ -102,8 +99,6 @@ struct HourlyWeatherView: View {
             }
         }
     }
-}
-
 
 #Preview {
     let hourlyMock = [DailyCurrent(dt: 1718200800, sunrise: 1718163600, sunset: 1718211600, temp: 293.15, feelsLike: 294.15, pressure: 1013, humidity: 80, dewPoint: 283.15, uvi: 0.0, clouds: 40, visibility: 10000, windSpeed: 1.5, windDeg: 120, windGust: 2.0, weather: [DailyWeather(id: 800, main: "Clear", description: "clear sky", icon: "01d")], pop: 0.0, rain: nil)]
