@@ -10,7 +10,8 @@ import SwiftUI
 struct WeatherView: View {
     @EnvironmentObject var viewModel: WeatherViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HourlyWeatherView(hourly: $viewModel.hourly, current: $viewModel.current, baseIconUrlPath: viewModel.baseIconUrlPath)
+        DailyWeatherView(forecast: $viewModel.forecast, baseIconUrlPath: viewModel.baseIconUrlPath)
     }
 }
 
