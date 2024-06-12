@@ -10,29 +10,29 @@ import Foundation
 class CurrentWeather {
     // MARK: - Welcome
     struct Model: Codable {
-        let coord: Coord
+//        let coord: Coord
         let weather: [Weather]
         let base: String
         let main: Main
-        let visibility: Int
+//        let visibility: Int
         let wind: Wind
-        let clouds: Clouds
+//        let clouds: Clouds
         let dt: Int
-        let sys: Sys
-        let timezone, id: Int
+//        let sys: Sys
+//        let timezone, id: Int
         let name: String
-        let cod: Int
+//        let cod: Int
     }
     
     // MARK: - Clouds
-    struct Clouds: Codable {
-        let all: Int
-    }
+//    struct Clouds: Codable {
+//        let all: Int
+//    }
     
     // MARK: - Coord
-    struct Coord: Codable {
-        let lon, lat: Double
-    }
+//    struct Coord: Codable {
+//        let lon, lat: Double
+//    }
     
     // MARK: - Main
     struct Main: Codable {
@@ -48,14 +48,30 @@ class CurrentWeather {
             case seaLevel = "sea_level"
             case grndLevel = "grnd_level"
         }
+        
+        var formattedTemp: String {
+          return doubleInInt(temp)
+        }        
+        
+        var formattedTempMax: String {
+          return doubleInInt(tempMax)
+        }
+        
+        var formattedTempMin: String {
+          return doubleInInt(tempMin)
+        }       
+        
+        var formattedFeelsLike: String {
+          return doubleInInt(feelsLike)
+        }
     }
     
     // MARK: - Sys
-    struct Sys: Codable {
-        let type, id: Int
-        let country: String
-        let sunrise, sunset: Int
-    }
+//    struct Sys: Codable {
+//        let type, id: Int
+//        let country: String
+//        let sunrise, sunset: Int
+//    }
     
     // MARK: - Weather
     struct Weather: Codable {
@@ -68,5 +84,16 @@ class CurrentWeather {
         let speed: Double
         let deg: Int
         let gust: Double
+        
+        var formattedWindSpeed: String {
+            let speedKmh = speed * 3.6
+            let roundedSpeed = Int(speedKmh.rounded())
+            return String(roundedSpeed)
+        }
     }
+}
+
+private func doubleInInt(_ value: Double) -> String {
+    let intValu = Int(value)
+    return String(intValu)
 }
