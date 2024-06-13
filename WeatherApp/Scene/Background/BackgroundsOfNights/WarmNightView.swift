@@ -45,13 +45,12 @@ struct WarmNightView: View {
             let size = CGFloat.random(in: 10...80)
             let offsetX = CGFloat.random(in: -UIScreen.main.bounds.width...UIScreen.main.bounds.width)
             let offsetY = CGFloat.random(in: -UIScreen.main.bounds.height...UIScreen.main.bounds.height)
-            let duration = Double.random(in: 3...6)
+            let duration = Double.random(in: 0...6)
             let imageName = "star"
             let appearTime = Date()
             
             starsArray.append(Star(imageName: imageName, size: size, offsetX: offsetX, offsetY: offsetY, duration: duration, appearTime: appearTime))
         }
-        
         return starsArray
     }()
     
@@ -61,7 +60,7 @@ struct WarmNightView: View {
                 gradient: Gradient(colors: [Color.warm1, Color.warm2]),
                 startPoint: .top,
                 endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all)
+            .edgesIgnoringSafeArea(.all)
             
             ForEach(stars) { star in
                 if star.isAppeared {
@@ -145,3 +144,4 @@ struct WarmNightView: View {
 #Preview {
     WarmNightView()
 }
+
