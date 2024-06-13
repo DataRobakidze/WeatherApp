@@ -41,7 +41,7 @@ struct HourlyWeatherItemView: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 8)
-                .fill(isSelected ? Color.black : Color.clear)
+                .fill(isSelected ? Color("TapColor") : Color.clear)
         )
         .onTapGesture {
             onTap()
@@ -65,10 +65,9 @@ struct HourlyWeatherView: View {
     var body: some View {
         VStack {
             ZStack {
-                Color.white.opacity(0.35)
+                Color(hex: "5882C1").opacity(0.3)
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                     .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 10)
-                    .frame(width: 343, height: 217)
                 
                 VStack {
                     HStack {
@@ -91,7 +90,7 @@ struct HourlyWeatherView: View {
                     Spacer()
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 10) {
+                        HStack(spacing: 20) {
                             ForEach(hourly.prefix(24), id: \.dt) { weather in
                                 HourlyWeatherItemView(
                                     weather: weather,
@@ -112,7 +111,7 @@ struct HourlyWeatherView: View {
                     }
                 }
             }
-            .frame(width: 343, height: 217)
+            .frame(width: screenWidth * 0.93, height: 217)
         }
     }
 }
