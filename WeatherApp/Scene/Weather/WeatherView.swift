@@ -11,15 +11,16 @@ import SwiftData
 struct WeatherView: View {
     // MARK: Properties
     @EnvironmentObject var viewModel: WeatherViewModel
-    
     @Query var selectedCities: [CityData]
-    
     @State private var selectedCity: CityData? = nil
     @State private var showAddLocationView = false
     @State private var currentWeather: String? = nil
-    
     private var current: CurrentWeather.Main? {
-        return viewModel.currentWeatherModel?.main
+        viewModel.currentWeatherModel?.main
+    }
+    
+    private var frameWidth: CGFloat {
+        screenWidth * 0.93
     }
     
     // MARK: - View
@@ -34,24 +35,27 @@ struct WeatherView: View {
                     
                     CitySelectionMenu(selectedCity: $selectedCity, selectedCities: selectedCities, selectCity: selectCity)
                         .padding(.trailing, 20)
+                        .shadow(color: Color.black.opacity(0.1), radius: 1, x: -3, y: 3)
+                    
                     
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 22) {
+                            
                             CurrentTemperatureDetailsView(temperature: current?.formattedTemp ?? "", maxTemp: current?.formattedTempMax ?? "", minTemp: current?.formattedTempMin ?? "")
-                                .frame(width: screenWidth * 0.93, height: 135)
+                                .frame(width: frameWidth, height: 135)
                                 .font(.system(size: 18))
                                 .foregroundStyle(.white)
                             
                             CurrentDetailsHView(humidity: current?.humidity ?? 0, feelsLike: current?.formattedFeelsLike ?? "", windSpeed: viewModel.currentWeatherModel?.wind.formattedWindSpeed ?? "" )
-                                .frame(width: screenWidth * 0.93, height: 47)
+                                .frame(width: frameWidth, height: 47)
                                 .font(.system(size: 18))
                                 .foregroundStyle(.white)
-                          
+                            
                             HourlyWeatherView(hourly: $viewModel.hourly, current: $viewModel.current, timeZoneOffset: $viewModel.timeZoneOffset, baseIconUrlPath: viewModel.baseIconUrlPath)
-                                .frame(width: screenWidth * 0.93, height: 180)
-
-                          DailyWeatherView(forecast: $viewModel.forecast, baseIconUrlPath: viewModel.baseIconUrlPath)
-                                .frame(width: screenWidth * 0.93, height: 363)
+                                .frame(width: frameWidth, height: 200)
+                            
+                            DailyWeatherView(forecast: $viewModel.forecast, baseIconUrlPath: viewModel.baseIconUrlPath)
+                                .frame(width: frameWidth, height: 363)
                         }
                     }
                 }
@@ -69,7 +73,7 @@ struct WeatherView: View {
         selectedCity = city
         viewModel.fetchingCurrentWeather(lat: city.latitude, lon: city.longitude)
         viewModel.fetchForecast(lat: city.latitude, lon: city.longitude)
-        viewModel.fetchHourly(lat: city.latitude, lon: city.longitude)        
+        viewModel.fetchHourly(lat: city.latitude, lon: city.longitude)
     }
     
     static func changeBackgrounds(for weather: String) -> AnyView {

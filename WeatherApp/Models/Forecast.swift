@@ -29,7 +29,7 @@ final class Forecast {
     struct Coord: Decodable {
         let lat, lon: Double
     }
-  
+    
     // MARK: - List
     struct List: Decodable {
         let dt: Int
