@@ -31,11 +31,13 @@ struct WeatherView: View {
     var body: some View {
         NavigationStack {
             ZStack {
+                RainyView()
+                    
                 VStack {
                     
                     CitySelectionMenu(selectedCity: $selectedCity, selectedCities: selectedCities, selectCity: selectCity)
                     
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         VStack(spacing: 22) {
                             CurrentTemperatureDetailsView(temperature: current?.formattedTemp ?? "", maxTemp: current?.formattedTempMax ?? "", minTemp: current?.formattedTempMin ?? "")
                                 .frame(width: screenWidth * 0.93, height: 135)
@@ -54,8 +56,9 @@ struct WeatherView: View {
                     }
                 }
             }
-            .padding()
-            .background(backgroundColor)
+//            .padding()
+            .ignoresSafeArea()
+//            .background(backgroundColor)
             .onAppear {
                 //Default city
                 if selectedCity == nil, let defaultCity = selectedCities.first(where: { $0.name == "Tbilisi" }) {

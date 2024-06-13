@@ -86,13 +86,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E6577222C1B0B72002B01E4 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		6E6577232C1B0B98002B01E4 /* BackgroundsViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,7 +159,6 @@
 				6E6577312C1B0F2C002B01E4 /* SpriteFile */,
 				6E65772C2C1B0E1F002B01E4 /* Clouds */,
 				6E6577232C1B0B98002B01E4 /* BackgroundsViews */,
-				6E6577222C1B0B72002B01E4 /* New Group */,
 				6E8A2ACD2C18E8D40022E272 /* Weather */,
 				6E8A2ACE2C18E8E90022E272 /* Search */,
 			);

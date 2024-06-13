@@ -13,7 +13,7 @@ struct RainyView: View {
         ZStack {
             SmallScreenCloudAnimation()
             GeometryReader {_ in
-                SpriteView(scene: SnowFall(),options: [.allowsTransparency])
+                SpriteView(scene: RainFall(),options: [.allowsTransparency])
                     .ignoresSafeArea()
             }
             VStack {
