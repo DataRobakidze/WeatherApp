@@ -8,19 +8,25 @@
 import Foundation
 import SimpleNetworking
 
-class WeatherViewModel: ObservableObject {
+final class WeatherViewModel: ObservableObject {
+    // MARK: Properties
     @Published var hourly: [DailyCurrent] = []
     @Published var forecast: [Forecast.List] = []
     @Published var current: DailyCurrent?
-    var baseIconUrlPath = "https://openweathermap.org/img/wn/"
+    @Published var timeZoneOffset: Int?
     @Published var currentWeatherModel: CurrentWeather.Model?
     
+    // MARK: Keys/Paths
+    let baseIconUrlPath = "https://openweathermap.org/img/wn/"
+    private let forecastApiKey = "690f88717c984072f681182b5be6acb1"
+    private let hourlyKey = "439d4b804bc8187953eb36d2a8c26a02"
+    
+    // MARK: - Fetching Functions
     func fetchForecast(lat: Double, lon: Double) {
-        WebService().fetchData(from: "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&appid=690f88717c984072f681182b5be6acb1&units=metric", resultType: Forecast.Model.self) { [weak self] data in
+        WebService().fetchData(from: "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&appid=\(forecastApiKey)&units=metric", resultType: Forecast.Model.self) { [weak self] data in
             switch data {
             case .success(let data):
                 DispatchQueue.main.async {
-                    print("🟢")
                     var seenDays: Set<String> = []
                     var uniqueItems: [Forecast.List] = []
                     let dateFormatter = DateFormatter()
@@ -41,8 +47,6 @@ class WeatherViewModel: ObservableObject {
                         }
                     }
                     self?.forecast = uniqueItems
-                    print(data as Any)
-                    print("🟢")
                 }
             case .failure(let error):
                 print("Error fetching page info: \(error)")
@@ -50,11 +54,12 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
-    func fetchHourly(lat: Double, lon: Double) { //WORKING
-        WebService().fetchData(from: "https://openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&units=metric&appid=439d4b804bc8187953eb36d2a8c26a02", resultType: WeatherData.self) { [weak self] data in
+    func fetchHourly(lat: Double, lon: Double) {
+        WebService().fetchData(from: "https://openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&units=metric&appid=\(hourlyKey)", resultType: WeatherData.self) { [weak self] data in
             switch data {
             case .success(let data):
                 DispatchQueue.main.async {
+                    self?.timeZoneOffset = data.timezoneOffset
                     self?.hourly = data.hourly ?? []
                     self?.current = data.current
                 }
@@ -65,7 +70,7 @@ class WeatherViewModel: ObservableObject {
     }
     
     func fetchingCurrentWeather(lat: Double, lon: Double) {
-        WebService().fetchData(from: "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=690f88717c984072f681182b5be6acb1&units=metric", resultType: CurrentWeather.Model.self) { [weak self] data in
+        WebService().fetchData(from: "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(forecastApiKey)&units=metric", resultType: CurrentWeather.Model.self) { [weak self] data in
             switch data {
             case .success(let data):
                 DispatchQueue.main.async {

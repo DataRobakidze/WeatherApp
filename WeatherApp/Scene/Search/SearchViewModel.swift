@@ -9,10 +9,11 @@ import Foundation
 import SimpleNetworking
 
 final class SearchViewModel: ObservableObject {
-    
+    // MARK: - Properties
     @Published var searchResults: [CoordinateModel] = []
     @Published var weatherData: [String: SearchWeatherModel.Model] = [:]
 
+    // MARK: Key
     let apiKey = "Snrvbf7eQcIgHoVnWULvEA==GlJctm9vzTBuCtAJ"
 
     // MARK: - Fetch function

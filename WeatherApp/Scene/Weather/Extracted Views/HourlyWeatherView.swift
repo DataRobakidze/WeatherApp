@@ -1,20 +1,21 @@
 //
-////
-////  HourlyWeatherView.swift
-////  WeatherApp
-////
-////  Created by Bakar Kharabadze on 6/12/24.
-////
+//  HourlyWeatherView.swift
+//  WeatherApp
+//
+//  Created by Bakar Kharabadze on 6/12/24.
 //
 
 import SwiftUI
 
 struct HourlyWeatherItemView: View {
+    // MARK: - Properties
     let weather: DailyCurrent
     let baseIconUrlPath: String
+    let timeZoneOffset: Int?
     let isSelected: Bool
     let onTap: () -> Void
     
+    // MARK: - View
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
             Text("\(Int(weather.temp ?? 10))°C")
@@ -33,15 +34,19 @@ struct HourlyWeatherItemView: View {
                 }
             }
             
-            Text(DateFormater.formatTime(date: Date(timeIntervalSince1970: TimeInterval(weather.dt ?? 0))))
+            Text(DateFormater.formatTime(date: Date(timeIntervalSince1970: TimeInterval(weather.dt ?? 0)), timezoneOffset: timeZoneOffset))
                 .foregroundColor(.white)
                 .font(.custom("SF Pro Display", size: 14))
                 .shadow(color: Color.black.opacity(0.1), radius: 1, x: -2, y: 3)
         }
         .padding()
         .background(
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: 20)
                 .fill(isSelected ? Color("TapColor") : Color.clear)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.white, lineWidth: isSelected ? 1 : 0)
         )
         .onTapGesture {
             onTap()
@@ -49,16 +54,19 @@ struct HourlyWeatherItemView: View {
     }
 }
 
+
 struct HourlyWeatherView: View {
     @Binding var hourly: [DailyCurrent]
     @Binding var current: DailyCurrent?
+    @Binding var timeZoneOffset: Int?
     private let baseIconUrlPath: String
     
     @State private var selectedTime: Int? = nil
     
-    public init(hourly: Binding<[DailyCurrent]>, current: Binding<DailyCurrent?>, baseIconUrlPath: String) {
+    public init(hourly: Binding<[DailyCurrent]>, current: Binding<DailyCurrent?>, timeZoneOffset: Binding<Int?>, baseIconUrlPath: String) {
         self._hourly = hourly
         self._current = current
+        self._timeZoneOffset = timeZoneOffset
         self.baseIconUrlPath = baseIconUrlPath
     }
     
@@ -73,9 +81,8 @@ struct HourlyWeatherView: View {
                     HStack {
                         Text("Today")
                             .foregroundColor(.white)
-                            .font(.custom("SF Pro Display", size: 20))
-                            .bold()
-                            .shadow(color: Color.black.opacity(0.1), radius: 1, x: -2, y: 3)
+                            .font(.system(size: 20, weight: .bold))
+                            .shadow(color: Color.black.opacity(0.1), radius: 1, x: -3, y: 3)
                             .padding(.leading, 17)
                         
                         Spacer()
@@ -90,11 +97,12 @@ struct HourlyWeatherView: View {
                     Spacer()
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 20) {
+                        HStack(spacing: 18) {
                             ForEach(hourly.prefix(24), id: \.dt) { weather in
                                 HourlyWeatherItemView(
                                     weather: weather,
                                     baseIconUrlPath: baseIconUrlPath,
+                                    timeZoneOffset: timeZoneOffset,
                                     isSelected: selectedTime == weather.dt,
                                     onTap: {
                                         if selectedTime == weather.dt {
@@ -107,11 +115,10 @@ struct HourlyWeatherView: View {
                             }
                         }
                         .padding(.horizontal, 10)
-                        .padding(.bottom, 40)
+                        .padding(.bottom, 10)
                     }
                 }
             }
-            .frame(width: screenWidth * 0.93, height: 217)
         }
     }
 }

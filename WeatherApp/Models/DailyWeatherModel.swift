@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - WeatherData
-struct WeatherData: Codable {
+struct WeatherData: Decodable {
     let lat: Double?
     let lon: Double?
     let timezone: String?
@@ -27,7 +27,7 @@ struct WeatherData: Codable {
 }
 
 // MARK: - Alert
-struct Alert: Codable {
+struct Alert: Decodable {
     let senderName, event: String?
     let start, end: Int?
     let description: String?
@@ -40,7 +40,7 @@ struct Alert: Codable {
 }
 
 // MARK: - Current
-struct DailyCurrent: Codable {
+struct DailyCurrent: Decodable {
     let dt: Int?
     let sunrise, sunset: Int?
     let temp, feelsLike: Double?
@@ -68,7 +68,7 @@ struct DailyCurrent: Codable {
 }
 
 // MARK: - Rain
-struct Rain: Codable {
+struct Rain: Decodable {
     let the1H: Double?
     
     enum CodingKeys: String, CodingKey {
@@ -77,13 +77,13 @@ struct Rain: Codable {
 }
 
 // MARK: - Weather
-struct DailyWeather: Codable {
+struct DailyWeather: Decodable {
     let id: Int?
     let main, description, icon: String?
 }
 
 // MARK: - Daily
-struct Daily: Codable {
+struct Daily: Decodable {
     let dt, sunrise, sunset, moonrise: Int?
     let moonset: Int?
     let moonPhase: Double?
@@ -114,17 +114,17 @@ struct Daily: Codable {
 }
 
 // MARK: - FeelsLike
-struct FeelsLike: Codable {
+struct FeelsLike: Decodable {
     let day, night, eve, morn: Double?
 }
 
 // MARK: - Temp
-struct Temp: Codable {
+struct Temp: Decodable {
     let day, min, max, night: Double?
     let eve, morn: Double?
 }
 
 // MARK: - Minutely
-struct Minutely: Codable {
+struct Minutely: Decodable {
     let dt, precipitation: Int?
 }
