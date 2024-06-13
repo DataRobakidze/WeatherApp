@@ -34,6 +34,7 @@ struct WeatherView: View {
                 VStack {
                     
                     CitySelectionMenu(selectedCity: $selectedCity, selectedCities: selectedCities, selectCity: selectCity)
+                        .padding(.trailing, 20)
                     
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 22) {
@@ -48,15 +49,15 @@ struct WeatherView: View {
                                 .foregroundStyle(.white)
                           
                             HourlyWeatherView(hourly: $viewModel.hourly, current: $viewModel.current, timeZoneOffset: $viewModel.timeZoneOffset, baseIconUrlPath: viewModel.baseIconUrlPath)
+                                .frame(width: screenWidth * 0.93, height: 180)
+
                           DailyWeatherView(forecast: $viewModel.forecast, baseIconUrlPath: viewModel.baseIconUrlPath)
+                                .frame(width: screenWidth * 0.93, height: 363)
                         }
-              
                     }
                 }
             }
-//            .padding()
-            .ignoresSafeArea()
-//            .background(backgroundColor)
+//            .ignoresSafeArea()
             .onAppear {
                 //Default city
                 if selectedCity == nil, let defaultCity = selectedCities.first(where: { $0.name == "Tbilisi" }) {

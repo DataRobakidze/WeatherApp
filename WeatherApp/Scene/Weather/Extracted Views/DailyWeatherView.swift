@@ -23,7 +23,6 @@ struct DailyWeatherView: View {
                 Color(hex: "5882C1").opacity(0.3)
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
                     .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 10)
-                    .frame(width: screenWidth * 0.93, height: 363)
                 
                     .overlay(
                         ScrollView {

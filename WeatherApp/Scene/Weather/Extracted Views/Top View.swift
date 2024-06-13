@@ -34,7 +34,8 @@ struct CurrentTemperatureDetailsView: View {
                     Text("Min.: \(minTemp)º")
                 }
             }
-            .shadow(color: .black, radius: 5, x: 0, y: 3)
+            .shadow(color: Color.black.opacity(0.1), radius: 1, x: -3, y: 3)
+
         }
     }
 }
