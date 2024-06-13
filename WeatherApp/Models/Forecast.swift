@@ -7,10 +7,8 @@
 
 import Foundation
 
-import Foundation
-
 // MARK: - Welcome
-class Forecast {
+final class Forecast {
     struct Model: Decodable {
         let cod: String
         let message, cnt: Int

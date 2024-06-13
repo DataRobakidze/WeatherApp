@@ -7,19 +7,17 @@
 
 import Foundation
 
-class SearchWeatherModel {
-    struct Model: Codable {
+final class SearchWeatherModel {
+    struct Model: Decodable {
         let weather: [Weather]
         let main: Main
     }
-    
-    // MARK: - Main
-    struct Main: Codable {
+
+    struct Main: Decodable {
         let temp: Double
     }
 
-    // MARK: - Weather
-    struct Weather: Codable {
+    struct Weather: Decodable {
         let main: String
     }
 }

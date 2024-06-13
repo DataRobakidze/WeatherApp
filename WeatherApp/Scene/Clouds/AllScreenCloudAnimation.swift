@@ -15,13 +15,13 @@ struct AllScreenCloudAnimation: View {
     @State private var bigBloudOffset5: CGFloat = 120
     @State private var bigBloudOffset6: CGFloat = 100
     
-    
     @State private var cloudOffset1: CGFloat = -200
     @State private var cloudOffset2: CGFloat = -100
     @State private var cloudOffset3: CGFloat = -100
     @State private var cloudOffset4: CGFloat = -200
     @State private var cloudOffset5: CGFloat = 100
     @State private var cloudOffset6: CGFloat = -100
+    
     var body: some View {
         ZStack {
             VStack {

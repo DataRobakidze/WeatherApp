@@ -7,9 +7,9 @@
 
 import Foundation
 
-class CurrentWeather: Codable {
+final class CurrentWeather: Decodable {
     // MARK: - Model
-    struct Model: Codable {
+    struct Model: Decodable {
         let weather: [Weather]
         let base: String
         let main: Main
@@ -19,7 +19,7 @@ class CurrentWeather: Codable {
     }
 
     // MARK: - Main
-    struct Main: Codable {
+    struct Main: Decodable {
         let temp, feelsLike, tempMin, tempMax: Double
         let pressure, humidity: Int
         let seaLevel, grndLevel: Int?
@@ -52,13 +52,13 @@ class CurrentWeather: Codable {
     }
 
     // MARK: - Weather
-    struct Weather: Codable {
+    struct Weather: Decodable {
         let id: Int
         let main, description, icon: String
     }
 
     // MARK: - Wind
-    struct Wind: Codable {
+    struct Wind: Decodable {
         let speed: Double
         let deg: Int
         let gust: Double?

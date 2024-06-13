@@ -12,7 +12,6 @@ struct SmallScreenCloudAnimation: View {
     @State private var bigBloudOffset2: CGFloat = 30
     @State private var bigBloudOffset3: CGFloat = -180
     
-    
     @State private var cloudOffset1: CGFloat = -200
     @State private var cloudOffset2: CGFloat = -100
     @State private var cloudOffset3: CGFloat = 60

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DailyWeatherView: View {
+    // MARK: - Properties
     
     @Binding var forecast: [Forecast.List]
     private let baseIconUrlPath: String
@@ -17,6 +18,7 @@ struct DailyWeatherView: View {
         self.baseIconUrlPath = baseIconUrlPath
     }
     
+    // MARK: - View
     var body: some View {
         VStack {
             ZStack {
@@ -85,5 +87,3 @@ struct DailyWeatherView: View {
         }
     }
 }
-
-

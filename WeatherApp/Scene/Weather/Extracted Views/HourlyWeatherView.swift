@@ -5,16 +5,17 @@
 //  Created by Bakar Kharabadze on 6/12/24.
 //
 
-
 import SwiftUI
 
 struct HourlyWeatherItemView: View {
+    // MARK: - Properties
     let weather: DailyCurrent
     let baseIconUrlPath: String
     let timeZoneOffset: Int?
     let isSelected: Bool
     let onTap: () -> Void
     
+    // MARK: - View
     var body: some View {
         VStack(alignment: .center, spacing: 15) {
             Text("\(Int(weather.temp ?? 10))°C")

@@ -8,7 +8,6 @@
 import Foundation
 
 struct DateFormater {
-    
     static func formatTime(date: Date, timezoneOffset: Int? = nil) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"

@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class RainFall: SKScene {
+final class RainFall: SKScene {
     override func sceneDidLoad() {
         
         size = UIScreen.main.bounds.size
@@ -25,7 +25,7 @@ class RainFall: SKScene {
     }
 }
 
-class SnowFall: SKScene {
+final class SnowFall: SKScene {
     override func sceneDidLoad() {
         
         size = UIScreen.main.bounds.size

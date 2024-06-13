@@ -6,13 +6,11 @@
 //
 
 import SwiftUI
-import CoreLocationUI
-import MapKit
 import SwiftData
 
 struct WeatherView: View {
+    // MARK: Properties
     @EnvironmentObject var viewModel: WeatherViewModel
-    @EnvironmentObject var locationManager: LocationManager
     
     @Query var selectedCities: [CityData]
     
@@ -24,11 +22,12 @@ struct WeatherView: View {
         return viewModel.currentWeatherModel?.main
     }
     
+    // MARK: - View
     var body: some View {
         NavigationStack {
             ZStack {
                 if let weather = viewModel.currentWeatherModel?.weather.first?.main {
-                    BackgroundsSwitcher.changeBackgrounds(for: weather)
+                    WeatherView.changeBackgrounds(for: weather)
                 }
                 
                 VStack {
@@ -57,9 +56,7 @@ struct WeatherView: View {
                     }
                 }
             }
-//            .ignoresSafeArea()
             .onAppear {
-                //Default city
                 if selectedCity == nil, let defaultCity = selectedCities.first(where: { $0.name == "Tbilisi" }) {
                     selectCity(defaultCity)
                 }
@@ -67,17 +64,14 @@ struct WeatherView: View {
         }
     }
     
+    // MARK: - Helper functions
     private func selectCity(_ city: CityData) {
         selectedCity = city
         viewModel.fetchingCurrentWeather(lat: city.latitude, lon: city.longitude)
         viewModel.fetchForecast(lat: city.latitude, lon: city.longitude)
-        viewModel.fetchHourly(lat: city.latitude, lon: city.longitude)
-        print(city.latitude, city.longitude)
-        
+        viewModel.fetchHourly(lat: city.latitude, lon: city.longitude)        
     }
     
-}
-struct BackgroundsSwitcher {
     static func changeBackgrounds(for weather: String) -> AnyView {
         switch weather {
         case "Clouds":
@@ -98,9 +92,7 @@ struct BackgroundsSwitcher {
     }
 }
 
-
 #Preview {
     WeatherView()
         .environmentObject(WeatherViewModel())
-        .environmentObject(LocationManager())
 }

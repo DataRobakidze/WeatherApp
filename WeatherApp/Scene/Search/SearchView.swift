@@ -33,9 +33,6 @@ struct SearchView: View {
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: BackButton())
             .padding()
-//            .alert(isPresented: $showAlert) {
-               // Alert(title: Text("Notification"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-//            }
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .onChange(of: searchText) {
                 searchViewModel.searchResults.removeAll()
