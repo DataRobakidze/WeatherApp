@@ -1,5 +1,5 @@
 //
-//  Current Details Horizontal.swift
+//  CurrentDetailsHView.swift
 //  WeatherApp
 //
 //  Created by Luka Gujejiani on 13.06.24.
@@ -31,7 +31,7 @@ struct CurrentDetailsHView: View {
                 
                 HStack {
                     Image("TemperatureIcon")
-                    Text("\(feelsLike)%")
+                    Text("\(feelsLike)º")
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
@@ -42,6 +42,8 @@ struct CurrentDetailsHView: View {
             }
             .font(.system(size: 14))
             .padding(.horizontal, 30)
+            .bold()
+            
         }
         .foregroundStyle(.white)
     }

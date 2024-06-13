@@ -11,58 +11,49 @@ final class CurrentWeather: Decodable {
     // MARK: - Model
     struct Model: Decodable {
         let weather: [Weather]
-        let base: String
         let main: Main
         let wind: Wind
-        let dt: Int
-        let name: String
     }
-
+    
     // MARK: - Main
     struct Main: Decodable {
         let temp, feelsLike, tempMin, tempMax: Double
-        let pressure, humidity: Int
-        let seaLevel, grndLevel: Int?
-
+        let humidity: Int
+        
         enum CodingKeys: String, CodingKey {
             case temp
             case feelsLike = "feels_like"
             case tempMin = "temp_min"
             case tempMax = "temp_max"
-            case pressure, humidity
-            case seaLevel = "sea_level"
-            case grndLevel = "grnd_level"
+            case humidity
         }
-
+        
         var formattedTemp: String {
             return doubleInInt(temp)
         }
-
+        
         var formattedTempMax: String {
             return doubleInInt(tempMax)
         }
-
+        
         var formattedTempMin: String {
             return doubleInInt(tempMin)
         }
-
+        
         var formattedFeelsLike: String {
             return doubleInInt(feelsLike)
         }
     }
-
+    
     // MARK: - Weather
     struct Weather: Decodable {
-        let id: Int
-        let main, description, icon: String
+        let main : String
     }
-
+    
     // MARK: - Wind
     struct Wind: Decodable {
         let speed: Double
-        let deg: Int
-        let gust: Double?
-
+        
         var formattedWindSpeed: String {
             let speedKmh = speed * 3.6
             let roundedSpeed = Int(speedKmh.rounded())
