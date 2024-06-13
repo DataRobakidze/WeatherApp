@@ -18,11 +18,7 @@ struct WeatherView: View {
     
     @State private var selectedCity: CityData? = nil
     @State private var showAddLocationView = false
-    
-    let backgroundColor = (LinearGradient(
-        colors: [Color.warmNight1, Color.warmNight2],
-        startPoint: .topLeading,
-        endPoint: .bottomTrailing))
+    @State private var currentWeather: String? = nil
     
     private var current: CurrentWeather.Main? {
         return viewModel.currentWeatherModel?.main
@@ -31,8 +27,10 @@ struct WeatherView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                RainyView()
-                    
+                if let weather = viewModel.currentWeatherModel?.weather.first?.main {
+                    BackgroundsSwitcher.changeBackgrounds(for: weather)
+                }
+                
                 VStack {
                     
                     CitySelectionMenu(selectedCity: $selectedCity, selectedCities: selectedCities, selectCity: selectCity)
@@ -76,7 +74,29 @@ struct WeatherView: View {
         print(city.latitude, city.longitude)
         
     }
+    
 }
+struct BackgroundsSwitcher {
+    static func changeBackgrounds(for weather: String) -> AnyView {
+        switch weather {
+        case "Clouds":
+            return AnyView(CloudyView())
+        case "Clear":
+            return AnyView(SunnyView())
+        case "Snow":
+            return AnyView(SnowyView())
+        case "Rain":
+            return AnyView(RainyView())
+        case "Drizzle":
+            return AnyView(RainyView())
+        case "Thunderstorm":
+            return AnyView(RainyView())
+        default:
+            return AnyView(SunnyView())
+        }
+    }
+}
+
 
 #Preview {
     WeatherView()
