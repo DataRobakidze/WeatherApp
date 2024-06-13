@@ -7,28 +7,6 @@
 
 import SwiftUI
 
-struct Star: Identifiable {
-    let id = UUID()
-    let imageName: String
-    let size: CGFloat
-    let offsetX: CGFloat
-    let offsetY: CGFloat
-    let duration: Double
-    let appearTime: Date
-    
-    var isAppeared: Bool = true
-    var isDisappeared: Bool = false
-    
-    init(imageName: String, size: CGFloat, offsetX: CGFloat, offsetY: CGFloat, duration: Double, appearTime: Date) {
-        self.imageName = imageName
-        self.size = size
-        self.offsetX = offsetX
-        self.offsetY = offsetY
-        self.duration = duration
-        self.appearTime = appearTime
-    }
-}
-
 struct WarmNightView: View {
     @State private var stars: [Star] = {
         var starsArray: [Star] = []
@@ -70,33 +48,7 @@ struct WarmNightView: View {
                         }
                 }
             }
-            
-            VStack {
-                HStack {
-                    ZStack {
-                        Image("Moon")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 129, height: 133)
-                            .foregroundStyle(Color.white1)
-                        
-                        Image("Sparkle")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 129, height: 133)
-                            .mask(
-                                Image("Moon")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 129, height: 133)
-                            )
-                    }
-                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 0))
-                    
-                    Spacer()
-                }
-                Spacer()
-            }
+            MoonView()
         }
     }
     
