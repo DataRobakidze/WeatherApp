@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BC1FDFD2C1B45A8004AC31D /* WarmNightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1FDFC2C1B45A8004AC31D /* WarmNightView.swift */; };
+		0BC1FDFF2C1B45B3004AC31D /* CloudyNightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1FDFE2C1B45B3004AC31D /* CloudyNightView.swift */; };
+		0BC1FE012C1B45BC004AC31D /* RainyNightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1FE002C1B45BC004AC31D /* RainyNightView.swift */; };
+		0BC1FE032C1B45C6004AC31D /* SnowyNightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1FE022C1B45C6004AC31D /* SnowyNightView.swift */; };
 		6E6577252C1B0BBB002B01E4 /* SunnyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6577242C1B0BBB002B01E4 /* SunnyView.swift */; };
 		6E6577272C1B0C2E002B01E4 /* CloudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6577262C1B0C2E002B01E4 /* CloudyView.swift */; };
 		6E6577292C1B0C51002B01E4 /* RainyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6577282C1B0C51002B01E4 /* RainyView.swift */; };
@@ -42,6 +46,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0BC1FDFC2C1B45A8004AC31D /* WarmNightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarmNightView.swift; sourceTree = "<group>"; };
+		0BC1FDFE2C1B45B3004AC31D /* CloudyNightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudyNightView.swift; sourceTree = "<group>"; };
+		0BC1FE002C1B45BC004AC31D /* RainyNightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainyNightView.swift; sourceTree = "<group>"; };
+		0BC1FE022C1B45C6004AC31D /* SnowyNightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowyNightView.swift; sourceTree = "<group>"; };
 		6E6577242C1B0BBB002B01E4 /* SunnyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyView.swift; sourceTree = "<group>"; };
 		6E6577262C1B0C2E002B01E4 /* CloudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudyView.swift; sourceTree = "<group>"; };
 		6E6577282C1B0C51002B01E4 /* RainyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainyView.swift; sourceTree = "<group>"; };
@@ -96,6 +104,10 @@
 				6E6577262C1B0C2E002B01E4 /* CloudyView.swift */,
 				6E6577282C1B0C51002B01E4 /* RainyView.swift */,
 				6E65772A2C1B0C74002B01E4 /* SnowyView.swift */,
+				0BC1FDFC2C1B45A8004AC31D /* WarmNightView.swift */,
+				0BC1FDFE2C1B45B3004AC31D /* CloudyNightView.swift */,
+				0BC1FE002C1B45BC004AC31D /* RainyNightView.swift */,
+				0BC1FE022C1B45C6004AC31D /* SnowyNightView.swift */,
 			);
 			path = BackgroundsViews;
 			sourceTree = "<group>";
@@ -321,11 +333,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E8A2AC52C18E8510022E272 /* Preview Assets.xcassets in Resources */,
-
 				6E6577342C1B0F53002B01E4 /* RainFall.sks in Resources */,
-
 				FB195FF12C1B16E600E01C0D /* AlegreyaSans-Bold.ttf in Resources */,
-
 				6E8A2AC22C18E8510022E272 /* Assets.xcassets in Resources */,
 				6E6577382C1B1040002B01E4 /* SnowFall.sks in Resources */,
 			);
@@ -347,8 +356,11 @@
 				85F817F82C19F641007F27C7 /* Colors.swift in Sources */,
 				6E6577272C1B0C2E002B01E4 /* CloudyView.swift in Sources */,
 				6E8A2AD02C18E9160022E272 /* SearchView.swift in Sources */,
+				0BC1FDFF2C1B45B3004AC31D /* CloudyNightView.swift in Sources */,
 				6E8A2ADA2C18EA5A0022E272 /* SearchViewModel.swift in Sources */,
 				854246FE2C191BE5008C75A2 /* Data.swift in Sources */,
+				0BC1FDFD2C1B45A8004AC31D /* WarmNightView.swift in Sources */,
+				0BC1FE012C1B45BC004AC31D /* RainyNightView.swift in Sources */,
 				6E8A2AD32C18E9720022E272 /* WeatherView.swift in Sources */,
 				FBFF1B102C19F4BA00B7A5AC /* DailyWeatherModel.swift in Sources */,
 				6E8A2ADF2C18EBDA0022E272 /* Forecast.swift in Sources */,
@@ -361,6 +373,7 @@
 				FBFF1B0E2C19B96B00B7A5AC /* HourlyWeatherView.swift in Sources */,
 				6E8A2AED2C19023E0022E272 /* CoordinateModel.swift in Sources */,
 				854247032C192A2D008C75A2 /* Preload data.swift in Sources */,
+				0BC1FE032C1B45C6004AC31D /* SnowyNightView.swift in Sources */,
 				85F817F52C19EBFE007F27C7 /* SearchWeatherModel.swift in Sources */,
 				6E6577252C1B0BBB002B01E4 /* SunnyView.swift in Sources */,
 				6E8A2ABE2C18E84E0022E272 /* WeatherAppApp.swift in Sources */,
