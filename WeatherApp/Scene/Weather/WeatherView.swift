@@ -47,7 +47,7 @@ struct WeatherView: View {
                                 .font(.system(size: 18))
                                 .foregroundStyle(.white)
                           
-                          HourlyWeatherView(hourly: $viewModel.hourly, current: $viewModel.current, baseIconUrlPath: viewModel.baseIconUrlPath)
+                            HourlyWeatherView(hourly: $viewModel.hourly, current: $viewModel.current, timeZoneOffset: $viewModel.timeZoneOffset, baseIconUrlPath: viewModel.baseIconUrlPath)
                           DailyWeatherView(forecast: $viewModel.forecast, baseIconUrlPath: viewModel.baseIconUrlPath)
                         }
               
