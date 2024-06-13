@@ -41,17 +41,44 @@ struct WeatherView: View {
                                 .frame(width: screenWidth * 0.93, height: 135)
                                 .font(.system(size: 18))
                                 .foregroundStyle(.white)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 2, opaque: true)
+                                )
                             
                             CurrentDetailsHView(humidity: current?.humidity ?? 0, feelsLike: current?.formattedFeelsLike ?? "", windSpeed: viewModel.currentWeatherModel?.wind.formattedWindSpeed ?? "" )
                                 .frame(width: screenWidth * 0.93, height: 47)
                                 .font(.system(size: 18))
                                 .foregroundStyle(.white)
-                          
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 4, opaque: true)
+                                )
+                            
                             HourlyWeatherView(hourly: $viewModel.hourly, current: $viewModel.current, timeZoneOffset: $viewModel.timeZoneOffset, baseIconUrlPath: viewModel.baseIconUrlPath)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 4, opaque: true)
+                                        .clipShape(RoundedRectangle(cornerRadius: 25))
+                                )
                                 .frame(width: screenWidth * 0.93, height: 180)
-
-                          DailyWeatherView(forecast: $viewModel.forecast, baseIconUrlPath: viewModel.baseIconUrlPath)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 4, opaque: true)
+                                        .clipShape(RoundedRectangle(cornerRadius: 25))
+                                )
+                            
+                            DailyWeatherView(forecast: $viewModel.forecast, baseIconUrlPath: viewModel.baseIconUrlPath)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 4, opaque: true)
+                                        .clipShape(RoundedRectangle(cornerRadius: 25))
+                                )
                                 .frame(width: screenWidth * 0.93, height: 363)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 4, opaque: true)
+                                )
                         }
                     }
                 }
@@ -69,7 +96,7 @@ struct WeatherView: View {
         selectedCity = city
         viewModel.fetchingCurrentWeather(lat: city.latitude, lon: city.longitude)
         viewModel.fetchForecast(lat: city.latitude, lon: city.longitude)
-        viewModel.fetchHourly(lat: city.latitude, lon: city.longitude)        
+        viewModel.fetchHourly(lat: city.latitude, lon: city.longitude)
     }
     
     static func changeBackgrounds(for weather: String) -> AnyView {

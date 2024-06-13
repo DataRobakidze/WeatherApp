@@ -71,54 +71,56 @@ struct HourlyWeatherView: View {
     }
     
     var body: some View {
-        VStack {
-            ZStack {
-                Color(hex: "5882C1").opacity(0.3)
-                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                    .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 10)
-                
-                VStack {
-                    HStack {
-                        Text("Today")
-                            .foregroundColor(.white)
-                            .font(.system(size: 20, weight: .bold))
-                            .shadow(color: Color.black.opacity(0.1), radius: 1, x: -3, y: 3)
-                            .padding(.leading, 17)
-                        
-                        Spacer()
-                        Text(DateFormater.formatDate(date: Date(timeIntervalSince1970: TimeInterval(current?.dt ?? 0))))
-                            .foregroundColor(.white)
-                            .font(.custom("SF Pro Display", size: 18))
-                            .shadow(color: Color.black.opacity(0.1), radius: 1, x: -2, y: 3)
-                            .padding(.trailing, 20)
-                    }
-                    .padding(.top, 20)
+        ZStack {
+            Color(hex: "5882C1").opacity(0.3)
+                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 10)
+            
+            VStack {
+                HStack {
+                    Text("Today")
+                        .foregroundColor(.white)
+                        .font(.system(size: 20, weight: .bold))
+                        .shadow(color: Color.black.opacity(0.1), radius: 1, x: -3, y: 3)
+                        .padding(.leading, 17)
                     
                     Spacer()
                     
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 18) {
-                            ForEach(hourly.prefix(24), id: \.dt) { weather in
-                                HourlyWeatherItemView(
-                                    weather: weather,
-                                    baseIconUrlPath: baseIconUrlPath,
-                                    timeZoneOffset: timeZoneOffset,
-                                    isSelected: selectedTime == weather.dt,
-                                    onTap: {
-                                        if selectedTime == weather.dt {
-                                            selectedTime = nil
-                                        } else {
-                                            selectedTime = weather.dt
-                                        }
+                    Text(DateFormater.formatDate(date: Date(timeIntervalSince1970: TimeInterval(current?.dt ?? 0))))
+                        .foregroundColor(.white)
+                        .font(.custom("SF Pro Display", size: 18))
+                        .shadow(color: Color.black.opacity(0.1), radius: 1, x: -2, y: 3)
+                        .padding(.trailing, 20)
+                }
+                .padding(.top)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 18) {
+                        ForEach(hourly.prefix(24), id: \.dt) { weather in
+                            HourlyWeatherItemView(
+                                weather: weather,
+                                baseIconUrlPath: baseIconUrlPath,
+                                timeZoneOffset: timeZoneOffset,
+                                isSelected: selectedTime == weather.dt,
+                                onTap: {
+                                    if selectedTime == weather.dt {
+                                        selectedTime = nil
+                                    } else {
+                                        selectedTime = weather.dt
                                     }
-                                )
-                            }
+                                }
+                            )
                         }
-                        .padding(.horizontal, 10)
-                        .padding(.bottom, 10)
                     }
                 }
+                .padding(.horizontal, 10)
+                .padding(.bottom, 12)
             }
+            //        .background(
+            //            Color(hex: "5882C1").opacity(0.3)
+            //                .clipShape(RoundedRectangle(cornerRadius: 25))
+            //                .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 10)
+            //        )
         }
     }
 }
