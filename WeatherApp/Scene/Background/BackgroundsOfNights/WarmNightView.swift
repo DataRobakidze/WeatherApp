@@ -16,15 +16,8 @@ struct Star: Identifiable {
     let duration: Double
     let appearTime: Date
     
-    var isAppeared: Bool {
-        let elapsedTime = Date().timeIntervalSince(appearTime)
-        return elapsedTime >= 0 && elapsedTime < duration
-    }
-    
-    var isDisappeared: Bool {
-        let elapsedTime = Date().timeIntervalSince(appearTime)
-        return elapsedTime >= duration
-    }
+    var isAppeared: Bool = true
+    var isDisappeared: Bool = false
     
     init(imageName: String, size: CGFloat, offsetX: CGFloat, offsetY: CGFloat, duration: Double, appearTime: Date) {
         self.imageName = imageName
