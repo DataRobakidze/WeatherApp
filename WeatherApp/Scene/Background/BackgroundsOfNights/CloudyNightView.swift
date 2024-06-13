@@ -25,7 +25,7 @@ struct CloudyNightView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 129, height: 133)
                             .foregroundStyle(Color.white1)
-                        Text("test")
+                        
                         Image("sparkle")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
