@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E6577202C1B0752002B01E4 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65771F2C1B0752002B01E4 /* Testing.swift */; };
+		6E6577252C1B0BBB002B01E4 /* SunnyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6577242C1B0BBB002B01E4 /* SunnyView.swift */; };
+		6E6577272C1B0C2E002B01E4 /* CloudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6577262C1B0C2E002B01E4 /* CloudyView.swift */; };
+		6E6577292C1B0C51002B01E4 /* RainyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6577282C1B0C51002B01E4 /* RainyView.swift */; };
+		6E65772B2C1B0C74002B01E4 /* SnowyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65772A2C1B0C74002B01E4 /* SnowyView.swift */; };
+		6E65772E2C1B0E31002B01E4 /* AllScreenCloudAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65772D2C1B0E31002B01E4 /* AllScreenCloudAnimation.swift */; };
+		6E6577302C1B0E97002B01E4 /* SmallScreenCloudAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65772F2C1B0E97002B01E4 /* SmallScreenCloudAnimation.swift */; };
+		6E6577342C1B0F53002B01E4 /* RainFall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6E6577322C1B0F53002B01E4 /* RainFall.sks */; };
+		6E6577382C1B1040002B01E4 /* SnowFall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6E6577362C1B1040002B01E4 /* SnowFall.sks */; };
+		6E65773B2C1B1107002B01E4 /* FallsFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65773A2C1B1107002B01E4 /* FallsFunctions.swift */; };
 		6E8A2ABE2C18E84E0022E272 /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8A2ABD2C18E84E0022E272 /* WeatherAppApp.swift */; };
 		6E8A2AC22C18E8510022E272 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E8A2AC12C18E8510022E272 /* Assets.xcassets */; };
 		6E8A2AC52C18E8510022E272 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E8A2AC42C18E8510022E272 /* Preview Assets.xcassets */; };
@@ -33,7 +41,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6E65771F2C1B0752002B01E4 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
+		6E6577242C1B0BBB002B01E4 /* SunnyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyView.swift; sourceTree = "<group>"; };
+		6E6577262C1B0C2E002B01E4 /* CloudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudyView.swift; sourceTree = "<group>"; };
+		6E6577282C1B0C51002B01E4 /* RainyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainyView.swift; sourceTree = "<group>"; };
+		6E65772A2C1B0C74002B01E4 /* SnowyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowyView.swift; sourceTree = "<group>"; };
+		6E65772D2C1B0E31002B01E4 /* AllScreenCloudAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllScreenCloudAnimation.swift; sourceTree = "<group>"; };
+		6E65772F2C1B0E97002B01E4 /* SmallScreenCloudAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallScreenCloudAnimation.swift; sourceTree = "<group>"; };
+		6E6577322C1B0F53002B01E4 /* RainFall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RainFall.sks; sourceTree = "<group>"; };
+		6E6577362C1B1040002B01E4 /* SnowFall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowFall.sks; sourceTree = "<group>"; };
+		6E65773A2C1B1107002B01E4 /* FallsFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallsFunctions.swift; sourceTree = "<group>"; };
 		6E8A2ABA2C18E84E0022E272 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E8A2ABD2C18E84E0022E272 /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
 		6E8A2AC12C18E8510022E272 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,12 +86,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E6577212C1B0774002B01E4 /* TestingFolder */ = {
+		6E6577222C1B0B72002B01E4 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				6E65771F2C1B0752002B01E4 /* Testing.swift */,
 			);
-			path = TestingFolder;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		6E6577232C1B0B98002B01E4 /* BackgroundsViews */ = {
+			isa = PBXGroup;
+			children = (
+				6E6577242C1B0BBB002B01E4 /* SunnyView.swift */,
+				6E6577262C1B0C2E002B01E4 /* CloudyView.swift */,
+				6E6577282C1B0C51002B01E4 /* RainyView.swift */,
+				6E65772A2C1B0C74002B01E4 /* SnowyView.swift */,
+			);
+			path = BackgroundsViews;
+			sourceTree = "<group>";
+		};
+		6E65772C2C1B0E1F002B01E4 /* Clouds */ = {
+			isa = PBXGroup;
+			children = (
+				6E65772D2C1B0E31002B01E4 /* AllScreenCloudAnimation.swift */,
+				6E65772F2C1B0E97002B01E4 /* SmallScreenCloudAnimation.swift */,
+			);
+			path = Clouds;
+			sourceTree = "<group>";
+		};
+		6E6577312C1B0F2C002B01E4 /* SpriteFile */ = {
+			isa = PBXGroup;
+			children = (
+				6E6577322C1B0F53002B01E4 /* RainFall.sks */,
+				6E6577362C1B1040002B01E4 /* SnowFall.sks */,
+				6E65773A2C1B1107002B01E4 /* FallsFunctions.swift */,
+			);
+			path = SpriteFile;
 			sourceTree = "<group>";
 		};
 		6E8A2AB12C18E84E0022E272 = {
@@ -97,7 +142,6 @@
 		6E8A2ABC2C18E84E0022E272 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				6E6577212C1B0774002B01E4 /* TestingFolder */,
 				941AF23C2C1A0ADF00615612 /* Extensions */,
 				6E8A2AE02C18EBE00022E272 /* Models */,
 				6E8A2AD12C18E92C0022E272 /* APP */,
@@ -119,6 +163,10 @@
 		6E8A2ACC2C18E8CB0022E272 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				6E6577312C1B0F2C002B01E4 /* SpriteFile */,
+				6E65772C2C1B0E1F002B01E4 /* Clouds */,
+				6E6577232C1B0B98002B01E4 /* BackgroundsViews */,
+				6E6577222C1B0B72002B01E4 /* New Group */,
 				6E8A2ACD2C18E8D40022E272 /* Weather */,
 				6E8A2ACE2C18E8E90022E272 /* Search */,
 			);
@@ -268,7 +316,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E8A2AC52C18E8510022E272 /* Preview Assets.xcassets in Resources */,
+				6E6577342C1B0F53002B01E4 /* RainFall.sks in Resources */,
 				6E8A2AC22C18E8510022E272 /* Assets.xcassets in Resources */,
+				6E6577382C1B1040002B01E4 /* SnowFall.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,9 +331,12 @@
 			files = (
 				6E8A2AEF2C1903210022E272 /* CurrentWeatherModel.swift in Sources */,
 				FBD7528C2C1A15DF00AC43DA /* DailyWeatherView.swift in Sources */,
-				6E6577202C1B0752002B01E4 /* Testing.swift in Sources */,
+				6E65772B2C1B0C74002B01E4 /* SnowyView.swift in Sources */,
+				6E6577302C1B0E97002B01E4 /* SmallScreenCloudAnimation.swift in Sources */,
+				6E65773B2C1B1107002B01E4 /* FallsFunctions.swift in Sources */,
 				FBD7528E2C1A333B00AC43DA /* DateFormater.swift in Sources */,
 				85F817F82C19F641007F27C7 /* Colors.swift in Sources */,
+				6E6577272C1B0C2E002B01E4 /* CloudyView.swift in Sources */,
 				6E8A2AD02C18E9160022E272 /* SearchView.swift in Sources */,
 				6E8A2ADA2C18EA5A0022E272 /* SearchViewModel.swift in Sources */,
 				854246FE2C191BE5008C75A2 /* Data.swift in Sources */,
@@ -291,13 +344,16 @@
 				FBFF1B102C19F4BA00B7A5AC /* DailyWeatherModel.swift in Sources */,
 				6E8A2ADF2C18EBDA0022E272 /* Forecast.swift in Sources */,
 				6E8A2AD52C18E9C00022E272 /* WeatherViewModel.swift in Sources */,
+				6E6577292C1B0C51002B01E4 /* RainyView.swift in Sources */,
 				941AF23B2C19FC5A00615612 /* LocationManager.swift in Sources */,
 				941AF23E2C1A0AF400615612 /* View.swift in Sources */,
+				6E65772E2C1B0E31002B01E4 /* AllScreenCloudAnimation.swift in Sources */,
 				854247012C191C01008C75A2 /* Top View.swift in Sources */,
 				FBFF1B0E2C19B96B00B7A5AC /* HourlyWeatherView.swift in Sources */,
 				6E8A2AED2C19023E0022E272 /* CoordinateModel.swift in Sources */,
 				854247032C192A2D008C75A2 /* Preload data.swift in Sources */,
 				85F817F52C19EBFE007F27C7 /* SearchWeatherModel.swift in Sources */,
+				6E6577252C1B0BBB002B01E4 /* SunnyView.swift in Sources */,
 				6E8A2ABE2C18E84E0022E272 /* WeatherAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
