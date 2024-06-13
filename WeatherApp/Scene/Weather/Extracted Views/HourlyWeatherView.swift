@@ -53,7 +53,6 @@ struct HourlyWeatherItemView: View {
     }
 }
 
-
 struct HourlyWeatherView: View {
     @Binding var hourly: [DailyCurrent]
     @Binding var current: DailyCurrent?
