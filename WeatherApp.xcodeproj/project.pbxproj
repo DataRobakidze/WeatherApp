@@ -26,6 +26,7 @@
 		85F817F82C19F641007F27C7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F817F72C19F641007F27C7 /* Colors.swift */; };
 		941AF23B2C19FC5A00615612 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AF23A2C19FC5A00615612 /* LocationManager.swift */; };
 		941AF23E2C1A0AF400615612 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AF23D2C1A0AF400615612 /* View.swift */; };
+		FB195FF12C1B16E600E01C0D /* AlegreyaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB195FF02C1B16E600E01C0D /* AlegreyaSans-Bold.ttf */; };
 		FBD7528C2C1A15DF00AC43DA /* DailyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD7528B2C1A15DF00AC43DA /* DailyWeatherView.swift */; };
 		FBD7528E2C1A333B00AC43DA /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD7528D2C1A333B00AC43DA /* DateFormater.swift */; };
 		FBFF1B0E2C19B96B00B7A5AC /* HourlyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFF1B0D2C19B96B00B7A5AC /* HourlyWeatherView.swift */; };
@@ -52,6 +53,8 @@
 		85F817F72C19F641007F27C7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		941AF23A2C19FC5A00615612 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		941AF23D2C1A0AF400615612 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		FB195FF02C1B16E600E01C0D /* AlegreyaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AlegreyaSans-Bold.ttf"; sourceTree = "<group>"; };
+		FB195FF22C1B173600E01C0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FBD7528B2C1A15DF00AC43DA /* DailyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherView.swift; sourceTree = "<group>"; };
 		FBD7528D2C1A333B00AC43DA /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
 		FBFF1B0D2C19B96B00B7A5AC /* HourlyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherView.swift; sourceTree = "<group>"; };
@@ -89,6 +92,7 @@
 		6E8A2ABC2C18E84E0022E272 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				FB195FF22C1B173600E01C0D /* Info.plist */,
 				941AF23C2C1A0ADF00615612 /* Extensions */,
 				6E8A2AE02C18EBE00022E272 /* Models */,
 				6E8A2AD12C18E92C0022E272 /* APP */,
@@ -160,6 +164,7 @@
 		6E8A2AEB2C1901140022E272 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FB195FF32C1B18D000E01C0D /* Fonts */,
 				6E8A2AC12C18E8510022E272 /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -201,6 +206,14 @@
 				85F817F72C19F641007F27C7 /* Colors.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FB195FF32C1B18D000E01C0D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FB195FF02C1B16E600E01C0D /* AlegreyaSans-Bold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E8A2AC52C18E8510022E272 /* Preview Assets.xcassets in Resources */,
+				FB195FF12C1B16E600E01C0D /* AlegreyaSans-Bold.ttf in Resources */,
 				6E8A2AC22C18E8510022E272 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,6 +450,7 @@
 				DEVELOPMENT_TEAM = 9S26B8AV5C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeatherApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -468,6 +483,7 @@
 				DEVELOPMENT_TEAM = 9S26B8AV5C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeatherApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
