@@ -16,7 +16,7 @@ struct MoonView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 129, height: 133)
-                        .foregroundStyle(Color.white1)
+                        .foregroundStyle(Color(hex: "D5D5D5"))
                     
                     Image("Sparkle")
                         .resizable()

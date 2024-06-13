@@ -104,8 +104,8 @@
 		0BC1FE0C2C1B5909004AC31D /* NightViews */ = {
 			isa = PBXGroup;
 			children = (
-				0BC1FE042C1B4C73004AC31D /* WarmNightView.swift */,
 				0BC1FE102C1B5A54004AC31D /* WarmNightModel.swift */,
+				0BC1FE042C1B4C73004AC31D /* WarmNightView.swift */,
 				0BC1FE062C1B4C80004AC31D /* CloudyNightView.swift */,
 				0BC1FE082C1B4C8F004AC31D /* RainyNightView.swift */,
 				0BC1FE0A2C1B4C9A004AC31D /* SnowyNightView.swift */,
@@ -122,13 +122,21 @@
 			path = CommonViews;
 			sourceTree = "<group>";
 		};
-		6E6577232C1B0B98002B01E4 /* BackgroundsViews */ = {
+		0BC1FE172C1B73A5004AC31D /* DayViews */ = {
 			isa = PBXGroup;
 			children = (
 				6E6577242C1B0BBB002B01E4 /* SunnyView.swift */,
 				6E6577262C1B0C2E002B01E4 /* CloudyView.swift */,
 				6E6577282C1B0C51002B01E4 /* RainyView.swift */,
 				6E65772A2C1B0C74002B01E4 /* SnowyView.swift */,
+			);
+			path = DayViews;
+			sourceTree = "<group>";
+		};
+		6E6577232C1B0B98002B01E4 /* BackgroundsViews */ = {
+			isa = PBXGroup;
+			children = (
+				0BC1FE172C1B73A5004AC31D /* DayViews */,
 				0BC1FE0C2C1B5909004AC31D /* NightViews */,
 			);
 			path = BackgroundsViews;
