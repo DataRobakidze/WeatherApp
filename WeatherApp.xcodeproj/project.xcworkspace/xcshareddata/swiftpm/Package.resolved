@@ -1,13 +1,13 @@
 {
-  "originHash" : "86c9b492c2c73576a32578adb31cb26d349f32c1befa9505271bd0f69958c445",
+  "originHash" : "1eb339f427beba8a86d3d3e72ab2f127433f8e5b0a6a049b2a7c9f0f1a67b4d6",
   "pins" : [
     {
-      "identity" : "package",
+      "identity" : "simplenetworking",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/DataRobakidze/package.git",
+      "location" : "https://github.com/GujMeister/SimpleNetworking",
       "state" : {
         "branch" : "main",
-        "revision" : "a3deb5e71026605c5a06aae60bdb06d8427e35db"
+        "revision" : "9be186ad616726caedd6d1c273f3e1382d8810ec"
       }
     }
   ],
