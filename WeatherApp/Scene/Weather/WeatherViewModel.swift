@@ -12,6 +12,7 @@ class WeatherViewModel: ObservableObject {
     @Published var hourly: [DailyCurrent] = []
     @Published var forecast: [Forecast.List] = []
     @Published var current: DailyCurrent?
+    @Published var timeZoneOffset: Int?
     var baseIconUrlPath = "https://openweathermap.org/img/wn/"
     @Published var currentWeatherModel: CurrentWeather.Model?
     
@@ -50,11 +51,12 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
-    func fetchHourly(lat: Double, lon: Double) { //WORKING
+    func fetchHourly(lat: Double, lon: Double) {
         WebService().fetchData(from: "https://openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&units=metric&appid=439d4b804bc8187953eb36d2a8c26a02", resultType: WeatherData.self) { [weak self] data in
             switch data {
             case .success(let data):
                 DispatchQueue.main.async {
+                    self?.timeZoneOffset = data.timezoneOffset
                     self?.hourly = data.hourly ?? []
                     self?.current = data.current
                 }
