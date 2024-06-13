@@ -118,7 +118,6 @@ struct HourlyWeatherView: View {
                     }
                 }
             }
-            .frame(width: screenWidth * 0.93, height: 180)
         }
     }
 }
