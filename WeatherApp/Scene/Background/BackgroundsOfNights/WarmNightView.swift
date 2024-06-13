@@ -37,8 +37,23 @@ struct Star: Identifiable {
 }
 
 struct WarmNightView: View {
-    @State private var stars: [Star] = []
-    let maxStarsCount = 100
+    @State private var stars: [Star] = {
+        var starsArray: [Star] = []
+        let maxStarsCount = 100
+        
+        for _ in 0..<maxStarsCount {
+            let size = CGFloat.random(in: 10...80)
+            let offsetX = CGFloat.random(in: -UIScreen.main.bounds.width...UIScreen.main.bounds.width)
+            let offsetY = CGFloat.random(in: -UIScreen.main.bounds.height...UIScreen.main.bounds.height)
+            let duration = Double.random(in: 3...6)
+            let imageName = "star"
+            let appearTime = Date()
+            
+            starsArray.append(Star(imageName: imageName, size: size, offsetX: offsetX, offsetY: offsetY, duration: duration, appearTime: appearTime))
+        }
+        
+        return starsArray
+    }()
     
     var body: some View {
         ZStack {
@@ -46,7 +61,7 @@ struct WarmNightView: View {
                 gradient: Gradient(colors: [Color.warm1, Color.warm2]),
                 startPoint: .top,
                 endPoint: .bottom)
-            .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
             
             ForEach(stars) { star in
                 if star.isAppeared {
@@ -91,14 +106,14 @@ struct WarmNightView: View {
                 Spacer()
             }
         }
-        .onAppear {
-            generateStars()
-        }
     }
     
-    private func generateStars() {
-        for _ in 0..<maxStarsCount {
-            generateStar()
+    private func scheduleRemoval(for star: Star) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + star.duration) {
+            if let index = stars.firstIndex(where: { $0.id == star.id }) {
+                stars.remove(at: index)
+                generateStar()
+            }
         }
     }
     
@@ -110,16 +125,7 @@ struct WarmNightView: View {
         let imageName = "star"
         let appearTime = Date()
         
-        self.stars.append(Star(imageName: imageName, size: size, offsetX: offsetX, offsetY: offsetY, duration: duration, appearTime: appearTime))
-    }
-    
-    private func scheduleRemoval(for star: Star) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + star.duration) {
-            if let index = stars.firstIndex(where: { $0.id == star.id }) {
-                stars.remove(at: index)
-                generateStar()
-            }
-        }
+        stars.append(Star(imageName: imageName, size: size, offsetX: offsetX, offsetY: offsetY, duration: duration, appearTime: appearTime))
     }
     
     private func opacity(for star: Star) -> Double {
@@ -139,4 +145,3 @@ struct WarmNightView: View {
 #Preview {
     WarmNightView()
 }
-
