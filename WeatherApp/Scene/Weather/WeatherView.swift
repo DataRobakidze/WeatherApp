@@ -45,17 +45,41 @@ struct WeatherView: View {
                                 .frame(width: frameWidth, height: 135)
                                 .font(.system(size: 18))
                                 .foregroundStyle(.white)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 2, opaque: true)
+                                )
                             
                             CurrentDetailsHView(humidity: current?.humidity ?? 0, feelsLike: current?.formattedFeelsLike ?? "", windSpeed: viewModel.currentWeatherModel?.wind.formattedWindSpeed ?? "" )
                                 .frame(width: frameWidth, height: 47)
                                 .font(.system(size: 18))
                                 .foregroundStyle(.white)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 2, opaque: true)
+                                )
                             
                             HourlyWeatherView(hourly: $viewModel.hourly, current: $viewModel.current, timeZoneOffset: $viewModel.timeZoneOffset, baseIconUrlPath: viewModel.baseIconUrlPath)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 2, opaque: true)
+                                )
                                 .frame(width: frameWidth, height: 200)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 2, opaque: true)
+                                )
                             
                             DailyWeatherView(forecast: $viewModel.forecast, baseIconUrlPath: viewModel.baseIconUrlPath)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 2, opaque: true)
+                                )
                                 .frame(width: frameWidth, height: 363)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 2, opaque: true)
+                                )
                         }
                     }
                 }
