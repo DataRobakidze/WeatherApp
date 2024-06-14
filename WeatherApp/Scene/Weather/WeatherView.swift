@@ -101,7 +101,6 @@ struct WeatherView: View {
     }
     
     static func changeBackgrounds(for weather: String, date: Date, timeOffset: Int?) -> AnyView {
-        let currentCityDate = date
         let time = DateFormater.formatTime(date: date, timezoneOffset: timeOffset)
         let isNightTime = DateFormater.isNightTime(timeString: time)
         
