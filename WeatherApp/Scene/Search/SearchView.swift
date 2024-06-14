@@ -85,7 +85,7 @@ struct SearchResultsView: View {
                     } label: {
                         HStack {
                             Text(city.name)
-                                .foregroundStyle(.black)
+                                .foregroundStyle(Color(UIColor.label))
                                 .padding(.vertical, 10)
                                 .padding(.horizontal)
                             Spacer()

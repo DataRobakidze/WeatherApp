@@ -36,7 +36,6 @@ final class SearchViewModel: ObservableObject {
             
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
                 print("HTTP Status Code: \(httpResponse.statusCode)")
-                print("What?")
                 return
             }
             
@@ -50,7 +49,6 @@ final class SearchViewModel: ObservableObject {
                 let cityDetails = try decoder.decode([CoordinateModel].self, from: data)
                 
                 DispatchQueue.main.async {
-                    print(cityDetails)
                     self.searchResults.append(contentsOf: cityDetails)
                 }
             } catch {
