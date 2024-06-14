@@ -18,7 +18,6 @@ let appContainer: ModelContainer = {
         
         guard try container.mainContext.fetch(cityFetchDescriptor).isEmpty else { return container }
         
-        // This code will only run if the persistent store is empty.
         let cities = [
             CityData(city: CoordinateModel(name: "Tbilisi", latitude: 41.69, longitude: 44.81))
         ]
@@ -27,7 +26,6 @@ let appContainer: ModelContainer = {
             container.mainContext.insert(city)
         }
         
-        // Save the context to persist the data
         try container.mainContext.save()
         
         return container

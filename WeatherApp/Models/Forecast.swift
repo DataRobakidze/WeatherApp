@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class Forecast {
     struct Model: Decodable {
         let cod: String
@@ -24,7 +23,7 @@ class Forecast {
     struct Coord: Decodable {
         let lat, lon: Double
     }
-  
+    
     struct List: Decodable {
         let dt: Int
         let main: MainClass
@@ -52,7 +51,7 @@ class Forecast {
         let main: MainEnum
         let icon: String
     }
-
+    
     enum MainEnum: String, Decodable {
         case clear = "Clear"
         case clouds = "Clouds"

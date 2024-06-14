@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-
 struct HourlyWeatherView: View {
+    // MARK: - Properties
+    @State private var selectedTime: Int? = nil
+    
     @Binding var hourly: [DailyCurrent]
     @Binding var current: DailyCurrent?
     @Binding var timeZoneOffset: Int?
-    private let baseIconUrlPath: String
     
-    @State private var selectedTime: Int? = nil
+    private let baseIconUrlPath: String
     
     public init(hourly: Binding<[DailyCurrent]>, current: Binding<DailyCurrent?>, timeZoneOffset: Binding<Int?>, baseIconUrlPath: String) {
         self._hourly = hourly
@@ -23,6 +24,7 @@ struct HourlyWeatherView: View {
         self.baseIconUrlPath = baseIconUrlPath
     }
     
+    // MARK: - View
     var body: some View {
         VStack {
             HStack {

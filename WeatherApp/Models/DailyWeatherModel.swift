@@ -54,4 +54,3 @@ struct Daily: Decodable {
 struct Temp: Decodable {
     let min, max: Double?
 }
-

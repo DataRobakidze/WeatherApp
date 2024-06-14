@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DailyWeatherView: View {
     // MARK: - Properties
-    
     @Binding var forecast: [Forecast.List]
     private let baseIconUrlPath: String
     

@@ -12,11 +12,11 @@ final class SearchWeatherModel {
         let weather: [Weather]
         let main: Main
     }
-
+    
     struct Main: Decodable {
         let temp: Double
     }
-
+    
     struct Weather: Decodable {
         let main: String
     }

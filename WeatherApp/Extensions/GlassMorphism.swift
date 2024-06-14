@@ -22,7 +22,6 @@ public struct TransparentBlurView: UIViewRepresentable {
     }
 }
 
-/// Disabling Trait Changes for Our Transparent Blur View
 public class TransparentBlurViewHelper: UIVisualEffectView {
     init (removeAllFilters: Bool) {
         super.init(effect: UIBlurEffect(style: .systemUltraThinMaterial))
@@ -35,7 +34,6 @@ public class TransparentBlurViewHelper: UIVisualEffectView {
             if removeAllFilters {
                 backdropLayer.filters = []
             } else {
-                /// Removing All Expect Blur Filter
                 backdropLayer.filters?.removeAll(where: { filter in
                     String(describing: filter) != "gaussianBlur"
                 })

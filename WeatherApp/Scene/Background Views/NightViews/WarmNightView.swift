@@ -52,8 +52,7 @@ struct WarmNightView: View {
         }
     }
     
-//MARK: - functions:
-    
+    //MARK: - functions:
     private func scheduleRemoval(for star: Star) {
         DispatchQueue.main.asyncAfter(deadline: .now() + star.duration) {
             if let index = stars.firstIndex(where: { $0.id == star.id }) {
