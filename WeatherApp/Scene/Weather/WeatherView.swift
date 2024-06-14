@@ -77,21 +77,27 @@ struct WeatherView: View {
     }
     
     static func changeBackgrounds(for weather: String) -> AnyView {
+        let now = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: now)
+        
+        let isNightTime = (hour >= 21 || hour < 6)
+        
         switch weather {
         case "Clouds":
-            return AnyView(CloudyView())
+            return isNightTime ? AnyView(CloudyNightView()) : AnyView(CloudyView())
         case "Clear":
-            return AnyView(SunnyView())
+            return isNightTime ? AnyView(WarmNightView()) : AnyView(SunnyView())
         case "Snow":
-            return AnyView(SnowyView())
+            return isNightTime ? AnyView(SnowyNightView()) : AnyView(SnowyView())
         case "Rain":
-            return AnyView(RainyView())
+            return isNightTime ? AnyView(RainyNightView()) : AnyView(RainyView())
         case "Drizzle":
-            return AnyView(RainyView())
+            return isNightTime ? AnyView(RainyNightView()) : AnyView(RainyView())
         case "Thunderstorm":
-            return AnyView(RainyView())
+            return isNightTime ? AnyView(RainyNightView()) : AnyView(RainyView())
         default:
-            return AnyView(SunnyView())
+            return isNightTime ? AnyView(WarmNightView()) : AnyView(SunnyView())
         }
     }
 }

@@ -11,6 +11,7 @@ struct CloudyView: View {
     var body: some View {
         ZStack {
             AllScreenCloudAnimation()
+                .foregroundColor(Color(hex: "FFFFFF"))
             VStack {
                 HStack {
                     Spacer()

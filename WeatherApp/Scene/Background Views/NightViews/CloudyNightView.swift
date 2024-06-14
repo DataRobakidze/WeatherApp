@@ -20,7 +20,7 @@ struct CloudyNightView: View {
             .edgesIgnoringSafeArea(.all)
             
             AllScreenCloudAnimation()
-                .foregroundStyle(Color(hex: "E5E5E5"))
+                .foregroundColor(Color(hex: "86848F"))
             
             MoonView()
         }
