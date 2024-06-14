@@ -23,7 +23,6 @@ struct SmallScreenCloudAnimation: View {
                 VStack {
                     Image(.smallCloud)
                         .resizable()
-                        .foregroundColor(.white)
                         .offset(x: cloudOffset3)
                         .frame(width: 64.21, height: 32.42)
                         .shadow(color: Color(hex: "#A27270").opacity(1), radius: 50)
@@ -37,7 +36,6 @@ struct SmallScreenCloudAnimation: View {
                             VStack {
                                 Image(.bigCloud)
                                     .resizable()
-                                    .foregroundColor(.white)
                                     .offset(x: bigBloudOffset1)
                                     .frame(width: 187.66, height: 80.69)
                                     .shadow(color: Color(hex: "#A27270").opacity(0.5), radius: 50)
@@ -48,7 +46,6 @@ struct SmallScreenCloudAnimation: View {
                             VStack {
                                 Image(.smallCloud)
                                     .resizable()
-                                    .foregroundColor(.white)
                                     .offset(x: cloudOffset1)
                                     .frame(width: 64.21, height: 32.42)
                                     .shadow(color: Color(hex: "#A27270").opacity(1), radius: 50)
@@ -62,7 +59,6 @@ struct SmallScreenCloudAnimation: View {
                     VStack {
                         Image(.smallCloud)
                             .resizable()
-                            .foregroundColor(.white)
                             .offset(x: cloudOffset1)
                             .frame(width: 64.21, height: 32.42)
                             .shadow(color: Color(hex: "#A27270").opacity(1), radius: 50)
@@ -73,7 +69,6 @@ struct SmallScreenCloudAnimation: View {
                     VStack {
                         Image(.smallCloud)
                             .resizable()
-                            .foregroundColor(.white)
                             .offset(x: cloudOffset4)
                             .frame(width: 116.5, height: 58.82)
                             .shadow(color: Color(hex: "#A27270").opacity(1), radius: 50)
@@ -84,7 +79,6 @@ struct SmallScreenCloudAnimation: View {
                     VStack {
                         Image(.bigCloud)
                             .resizable()
-                            .foregroundColor(.white)
                             .offset(x: bigBloudOffset3)
                             .frame(width: 187.66, height: 80.69)
                             .shadow(color: Color(hex: "#A27270").opacity(0.5), radius: 50)

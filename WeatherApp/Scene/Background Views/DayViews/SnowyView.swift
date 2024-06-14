@@ -12,6 +12,7 @@ struct SnowyView: View {
     var body: some View {
         ZStack {
             SmallScreenCloudAnimation()
+                .foregroundColor(Color(hex: "FFFFFF"))
             GeometryReader {_ in
                 SpriteView(scene: SnowFall(),options: [.allowsTransparency])
                     .ignoresSafeArea()

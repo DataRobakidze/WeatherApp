@@ -16,7 +16,7 @@ struct RainyNightView: View {
             .edgesIgnoringSafeArea(.all)
             
             SmallScreenCloudAnimation()
-                .foregroundStyle(Color(hex: "E5E5E5"))
+                .foregroundStyle(Color(hex: "86848F"))
             GeometryReader {_ in
                 SpriteView(scene: RainFall(),options: [.allowsTransparency])
                     .ignoresSafeArea()
