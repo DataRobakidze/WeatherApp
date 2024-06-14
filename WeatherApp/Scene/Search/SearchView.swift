@@ -85,7 +85,7 @@ struct SearchResultsView: View {
                     } label: {
                         HStack {
                             Text(city.name)
-                                .foregroundStyle(.black)
+                                .foregroundStyle(Color(UIColor.label))
                                 .padding(.vertical, 10)
                                 .padding(.horizontal)
                             Spacer()
@@ -193,7 +193,7 @@ struct SearchLocations: View {
 
 extension View {
     func barTitle(_ title: String,
-             size: NavigationBarItem.TitleDisplayMode = .large) -> some View {
+                  size: NavigationBarItem.TitleDisplayMode = .large) -> some View {
         self.navigationBarTitle(title, displayMode: size)
     }
 }
@@ -203,12 +203,12 @@ struct BackButton: View {
     
     var body : some View {
         Button {
-        self.presentationMode.wrappedValue.dismiss()
+            self.presentationMode.wrappedValue.dismiss()
         } label: {
             HStack {
-            Image(systemName: "chevron.left")
-                .aspectRatio(contentMode: .fit)
-                .foregroundColor(Color(UIColor.label))
+                Image(systemName: "chevron.left")
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(Color(UIColor.label))
             }
         }
     }

@@ -11,15 +11,16 @@ import SwiftData
 struct WeatherView: View {
     // MARK: Properties
     @EnvironmentObject var viewModel: WeatherViewModel
-    
     @Query var selectedCities: [CityData]
-    
     @State private var selectedCity: CityData? = nil
     @State private var showAddLocationView = false
     @State private var currentWeather: String? = nil
-    
     private var current: CurrentWeather.Main? {
-        return viewModel.currentWeatherModel?.main
+        viewModel.currentWeatherModel?.main
+    }
+    
+    private var frameWidth: CGFloat {
+        screenWidth * 0.93
     }
     
     // MARK: - View
@@ -27,31 +28,58 @@ struct WeatherView: View {
         NavigationStack {
             ZStack {
                 if let weather = viewModel.currentWeatherModel?.weather.first?.main {
-                    WeatherView.changeBackgrounds(for: weather)
+                    WeatherView.changeBackgrounds(for: weather, date: Date(timeIntervalSince1970: TimeInterval(viewModel.current?.dt ?? 0)), timeOffset: viewModel.timeZoneOffset)
                 }
                 
                 VStack {
                     
                     CitySelectionMenu(selectedCity: $selectedCity, selectedCities: selectedCities, selectCity: selectCity)
                         .padding(.trailing, 20)
+                        .shadow(color: Color.black.opacity(0.1), radius: 1, x: -3, y: 3)
+                    
                     
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 22) {
+                            
                             CurrentTemperatureDetailsView(temperature: current?.formattedTemp ?? "", maxTemp: current?.formattedTempMax ?? "", minTemp: current?.formattedTempMin ?? "")
-                                .frame(width: screenWidth * 0.93, height: 135)
+                                .frame(width: frameWidth, height: 135)
                                 .font(.system(size: 18))
                                 .foregroundStyle(.white)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 2, opaque: true)
+                                )
                             
                             CurrentDetailsHView(humidity: current?.humidity ?? 0, feelsLike: current?.formattedFeelsLike ?? "", windSpeed: viewModel.currentWeatherModel?.wind.formattedWindSpeed ?? "" )
-                                .frame(width: screenWidth * 0.93, height: 47)
+                                .frame(width: frameWidth, height: 47)
                                 .font(.system(size: 18))
                                 .foregroundStyle(.white)
-                          
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 2, opaque: true)
+                                )
+                            
                             HourlyWeatherView(hourly: $viewModel.hourly, current: $viewModel.current, timeZoneOffset: $viewModel.timeZoneOffset, baseIconUrlPath: viewModel.baseIconUrlPath)
-                                .frame(width: screenWidth * 0.93, height: 180)
-
-                          DailyWeatherView(forecast: $viewModel.forecast, baseIconUrlPath: viewModel.baseIconUrlPath)
-                                .frame(width: screenWidth * 0.93, height: 363)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 2, opaque: true)
+                                )
+                                .frame(width: frameWidth, height: 200)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 2, opaque: true)
+                                )
+                            
+                            DailyWeatherView(forecast: $viewModel.forecast, baseIconUrlPath: viewModel.baseIconUrlPath)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 2, opaque: true)
+                                )
+                                .frame(width: frameWidth, height: 363)
+                                .background(
+                                    TransparentBlurView(removeAllFilters: true)
+                                        .blur(radius: 2, opaque: true)
+                                )
                         }
                     }
                 }
@@ -69,25 +97,28 @@ struct WeatherView: View {
         selectedCity = city
         viewModel.fetchingCurrentWeather(lat: city.latitude, lon: city.longitude)
         viewModel.fetchForecast(lat: city.latitude, lon: city.longitude)
-        viewModel.fetchHourly(lat: city.latitude, lon: city.longitude)        
+        viewModel.fetchHourly(lat: city.latitude, lon: city.longitude)
     }
     
-    static func changeBackgrounds(for weather: String) -> AnyView {
+    static func changeBackgrounds(for weather: String, date: Date, timeOffset: Int?) -> AnyView {
+        let time = DateFormater.formatTime(date: date, timezoneOffset: timeOffset)
+        let isNightTime = DateFormater.isNightTime(timeString: time)
+        
         switch weather {
         case "Clouds":
-            return AnyView(CloudyView())
+            return isNightTime ? AnyView(CloudyNightView()) : AnyView(CloudyView())
         case "Clear":
-            return AnyView(SunnyView())
+            return isNightTime ? AnyView(WarmNightView()) : AnyView(SunnyView())
         case "Snow":
-            return AnyView(SnowyView())
+            return isNightTime ? AnyView(SnowyNightView()) : AnyView(SnowyView())
         case "Rain":
-            return AnyView(RainyView())
+            return isNightTime ? AnyView(RainyNightView()) : AnyView(RainyView())
         case "Drizzle":
-            return AnyView(RainyView())
+            return isNightTime ? AnyView(RainyNightView()) : AnyView(RainyView())
         case "Thunderstorm":
-            return AnyView(RainyView())
+            return isNightTime ? AnyView(RainyNightView()) : AnyView(RainyView())
         default:
-            return AnyView(SunnyView())
+            return isNightTime ? AnyView(WarmNightView()) : AnyView(SunnyView())
         }
     }
 }

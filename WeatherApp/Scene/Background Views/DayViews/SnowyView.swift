@@ -1,16 +1,22 @@
 //
-//  CloudyView.swift
+//  SnowyView.swift
 //  WeatherApp
 //
 //  Created by Data on 13.06.24.
 //
 
 import SwiftUI
+import SpriteKit
 
-struct CloudyView: View {
+struct SnowyView: View {
     var body: some View {
         ZStack {
-            AllScreenCloudAnimation()
+            SmallScreenCloudAnimation()
+                .foregroundColor(Color(hex: "FFFFFF"))
+            GeometryReader {_ in
+                SpriteView(scene: SnowFall(),options: [.allowsTransparency])
+                    .ignoresSafeArea()
+            }
             VStack {
                 HStack {
                     Spacer()
@@ -25,13 +31,14 @@ struct CloudyView: View {
                 }
                 Spacer()
             }
+            
         }
         .background(
-            LinearGradient(gradient: Gradient(colors: [Color(hex: "373F4E"), Color(hex: "ACB7BF")]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [Color(hex: "89A6D9"), Color(hex: "6E819A")]), startPoint: .top, endPoint: .bottom)
         )
     }
 }
 
 #Preview {
-    CloudyView()
+    SnowyView()
 }

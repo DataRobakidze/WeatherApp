@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DailyWeatherView: View {
     // MARK: - Properties
-    
     @Binding var forecast: [Forecast.List]
     private let baseIconUrlPath: String
     
@@ -32,8 +31,9 @@ struct DailyWeatherView: View {
                                 ForEach(forecast, id: \.dt) { weather in
                                     HStack {
                                         VStack(alignment: .leading) {
+                                            
                                             Text(DateFormater.formatDay(dateString: weather.dtTxt))
-                                                .foregroundColor(.white)
+                                            //                                                .foregroundColor(.white)
                                                 .font(.custom("Alegreya Sans", size: 18))
                                                 .font(.headline)
                                         }
@@ -54,36 +54,47 @@ struct DailyWeatherView: View {
                                         
                                         Spacer()
                                         
-                                        HStack(spacing: 8) {
-                                            Text("\(Int(weather.main.tempMax))")
-                                                .font(.custom("Alegreya Sans", size: 18))
-                                                .foregroundColor(.white)
-                                            
-                                            Text("°C")
-                                                .font(.custom("Alegreya Sans", size: 10))
-                                                .foregroundColor(.white)
-                                                .padding(.leading, -8)
-                                            
-                                            Text("\(Int(weather.main.tempMin))")
-                                                .foregroundColor(Color.white.opacity(0.7))
-                                                .font(.custom("Alegreya Sans", size: 18))
-                                            
-                                            Text("°C")
-                                                .foregroundColor(Color.white.opacity(0.7))
-                                                .font(.custom("Alegreya Sans", size: 10))
-                                                .padding(.leading, -8)
-                                        }
-                                        .frame(width: 80)
+                                        DailyWeatherHView(tempMax: weather.main.tempMax, tempMin: weather.main.tempMin)
+                                        
                                     }
                                     .padding(.horizontal)
                                     .padding(.vertical, 8)
                                     .cornerRadius(8)
                                 }
                             }
+                            .foregroundColor(.white)
                             .padding(.top)
                         }
                     )
             }
         }
+    }
+}
+
+private struct DailyWeatherHView: View {
+    let tempMax: Double
+    let tempMin: Double
+    
+    var body: some View {
+        HStack(spacing: 8) {
+            Text("\(Int(tempMax))")
+                .font(.custom("Alegreya Sans", size: 18))
+            //                .foregroundColor(.white)
+            
+            Text("°C")
+                .font(.custom("Alegreya Sans", size: 10))
+            //                .foregroundColor(.white)
+                .padding(.leading, -8)
+            
+            Text("\(Int(tempMin))")
+                .foregroundColor(Color.white.opacity(0.7))
+                .font(.custom("Alegreya Sans", size: 18))
+            
+            Text("°C")
+                .foregroundColor(Color.white.opacity(0.7))
+                .font(.custom("Alegreya Sans", size: 10))
+                .padding(.leading, -8)
+        }
+        .frame(width: 80)
     }
 }

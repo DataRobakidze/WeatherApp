@@ -30,11 +30,8 @@ final class WeatherViewModel: ObservableObject {
                     var seenDays: Set<String> = []
                     var uniqueItems: [Forecast.List] = []
                     let dateFormatter = DateFormatter()
-                    
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                    
                     let outputFormatter = DateFormatter()
-                    
                     outputFormatter.dateFormat = "yyyy-MM-dd"
                     
                     for item in data.list {

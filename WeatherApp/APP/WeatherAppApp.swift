@@ -17,7 +17,6 @@ struct WeatherAppApp: App {
             WeatherView()
                 .environmentObject(viewModel)
                 .environment(\.modelContext, appContainer.mainContext)
-            
         }
         .modelContainer(for: CityData.self)
     }

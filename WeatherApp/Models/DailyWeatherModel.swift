@@ -7,124 +7,50 @@
 
 import Foundation
 
-// MARK: - WeatherData
 struct WeatherData: Decodable {
     let lat: Double?
     let lon: Double?
     let timezone: String?
     let timezoneOffset: Int?
     let current: DailyCurrent?
-    let minutely: [Minutely]?
     let hourly: [DailyCurrent]?
     let daily: [Daily]?
-    let alerts: [Alert]?
     
     enum CodingKeys: String, CodingKey {
         case lat, lon, timezone
         case timezoneOffset = "timezone_offset"
-        case current, minutely, hourly, daily, alerts
+        case current, hourly, daily
     }
 }
 
-// MARK: - Alert
-struct Alert: Decodable {
-    let senderName, event: String?
-    let start, end: Int?
-    let description: String?
-    let tags: [String]?
-    
-    enum CodingKeys: String, CodingKey {
-        case senderName = "sender_name"
-        case event, start, end, description, tags
-    }
-}
-
-// MARK: - Current
 struct DailyCurrent: Decodable {
     let dt: Int?
-    let sunrise, sunset: Int?
-    let temp, feelsLike: Double?
-    let pressure, humidity: Int?
-    let dewPoint, uvi: Double?
-    let clouds, visibility: Int?
-    let windSpeed: Double?
-    let windDeg: Int?
-    let windGust: Double?
+    let temp: Double?
     let weather: [DailyWeather]?
-    let pop: Double?
-    let rain: Rain?
     
     enum CodingKeys: String, CodingKey {
-        case dt, sunrise, sunset, temp
-        case feelsLike = "feels_like"
-        case pressure, humidity
-        case dewPoint = "dew_point"
-        case uvi, clouds, visibility
-        case windSpeed = "wind_speed"
-        case windDeg = "wind_deg"
-        case windGust = "wind_gust"
-        case weather, pop, rain
+        case dt, temp
+        case weather
     }
 }
 
-// MARK: - Rain
-struct Rain: Decodable {
-    let the1H: Double?
-    
-    enum CodingKeys: String, CodingKey {
-        case the1H = "1h"
-    }
-}
-
-// MARK: - Weather
 struct DailyWeather: Decodable {
     let id: Int?
-    let main, description, icon: String?
+    let main, icon: String?
 }
 
-// MARK: - Daily
 struct Daily: Decodable {
-    let dt, sunrise, sunset, moonrise: Int?
-    let moonset: Int?
-    let moonPhase: Double?
+    let dt: Int?
     let temp: Temp?
-    let feelsLike: FeelsLike?
-    let pressure, humidity: Int?
-    let dewPoint, windSpeed: Double?
-    let windDeg: Int?
-    let windGust: Double?
     let weather: [DailyWeather]?
-    let clouds: Int?
-    let pop: Double?
-    let rain: Double?
-    let uvi: Double?
     
     enum CodingKeys: String, CodingKey {
-        case dt, sunrise, sunset, moonrise, moonset
-        case moonPhase = "moon_phase"
+        case dt
         case temp
-        case feelsLike = "feels_like"
-        case pressure, humidity
-        case dewPoint = "dew_point"
-        case windSpeed = "wind_speed"
-        case windDeg = "wind_deg"
-        case windGust = "wind_gust"
-        case weather, clouds, pop, rain, uvi
+        case weather
     }
 }
 
-// MARK: - FeelsLike
-struct FeelsLike: Decodable {
-    let day, night, eve, morn: Double?
-}
-
-// MARK: - Temp
 struct Temp: Decodable {
-    let day, min, max, night: Double?
-    let eve, morn: Double?
-}
-
-// MARK: - Minutely
-struct Minutely: Decodable {
-    let dt, precipitation: Int?
+    let min, max: Double?
 }

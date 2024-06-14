@@ -38,7 +38,9 @@ struct CitySelectionMenu: View {
                         .resizable()
                         .frame(width: 20, height: 20)
                         .padding(.leading, 8)
+                    
                     Text(selectedCity?.name ?? "Select City")
+                    
                     Image(systemName: "chevron.down")
                 }
                 .foregroundStyle(.white)
