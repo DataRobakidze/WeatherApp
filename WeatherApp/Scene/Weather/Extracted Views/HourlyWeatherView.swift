@@ -22,7 +22,7 @@ struct HourlyWeatherView: View {
         self._timeZoneOffset = timeZoneOffset
         self.baseIconUrlPath = baseIconUrlPath
     }
-    
+
     var body: some View {
         VStack {
             ZStack {

@@ -20,6 +20,19 @@ struct DateFormater {
         return dateFormatter.string(from: date)
     }
     
+    static func isNightTime(timeString: String) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+        if let date = dateFormatter.date(from: timeString) {
+            let calendar = Calendar.current
+            let hour = calendar.component(.hour, from: date)
+            return (hour >= 21 || hour < 6)
+        }
+        
+        return false
+    }
+    
     static func formatDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM, dd"

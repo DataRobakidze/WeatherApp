@@ -28,7 +28,7 @@ struct WeatherView: View {
         NavigationStack {
             ZStack {
                 if let weather = viewModel.currentWeatherModel?.weather.first?.main {
-                    WeatherView.changeBackgrounds(for: weather)
+                    WeatherView.changeBackgrounds(for: weather, date: Date(timeIntervalSince1970: TimeInterval(viewModel.current?.dt ?? 0)), timeOffset: viewModel.timeZoneOffset)
                 }
                 
                 VStack {
@@ -76,12 +76,10 @@ struct WeatherView: View {
         viewModel.fetchHourly(lat: city.latitude, lon: city.longitude)
     }
     
-    static func changeBackgrounds(for weather: String) -> AnyView {
-        let now = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: now)
-        
-        let isNightTime = (hour >= 21 || hour < 6)
+    static func changeBackgrounds(for weather: String, date: Date, timeOffset: Int?) -> AnyView {
+        let currentCityDate = date
+        let time = DateFormater.formatTime(date: date, timezoneOffset: timeOffset)
+        let isNightTime = DateFormater.isNightTime(timeString: time)
         
         switch weather {
         case "Clouds":
