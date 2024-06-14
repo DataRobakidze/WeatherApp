@@ -23,15 +23,21 @@ struct SunnyView: View {
                     VStack {
                         Image("Tolia")
                             .resizable()
+                            .foregroundColor(.white)
                             .frame(width: 30.11, height: 31.98)
-                            .padding(.leading, 10)
+                            .padding(.leading, 30)
                         Image("Tolia")
                             .resizable()
+                            .foregroundColor(.white)
                             .frame(width: 30.11, height: 31.98)
+                            .padding(.leading, -50)
                         Image("Tolia")
                             .resizable()
+                            .foregroundColor(.white)
                             .frame(width: 30.11, height: 31.98)
+                            .padding(.top, -10)
                     }
+                    .padding(.top, -40)
                     Spacer()
                 }
                 Spacer()
